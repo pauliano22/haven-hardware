@@ -93,8 +93,15 @@ mic_port = cq.Workplane("XZ").workplane(offset=-REACH).center(3, 12).circle(0.5)
 led_port = cq.Workplane("XZ").workplane(offset=-REACH).center(-4, 9).circle(0.9).extrude(2 * REACH)
 body = body.cut(mic_port).cut(led_port)
 
-top_half = body.intersect(cq.Workplane("XY").box(200, 200, 60, centered=(True, True, False)).translate((0, 0, -20)))
-bottom_half = body.cut(top_half)
+# Split into two moldable/printable halves along a plane through the
+# tube's long (Z) axis, not across it. A Z-height split (tried first) put
+# ~99% of the body's volume in one piece and a ~1% sliver in the other --
+# this body is a tall, mostly-vertical loft, so cutting *across* its height
+# just slices off a tiny end cap, not two comparable halves. Splitting by
+# X=0 instead gives left/right pieces that both run the full head-to-nozzle
+# length, which is what an actual two-part shell needs.
+left_half = body.intersect(cq.Workplane("XY").box(200, 200, 200, centered=(True, True, True)).translate((-100, 0, 0)))
+right_half = body.cut(left_half)
 
 # ---- Real internal components: compact board + battery, both in the
 #      widest band (z ~ 5 to 12) ----
@@ -108,8 +115,12 @@ batt_ref = cq.Workplane("XY").workplane(offset=BATT_Z0).center(0, -1).circle(BAT
 
 OUT = "/tmp/claude-1000/-home-paul22iac/de6df91d-5626-4f43-95cb-adf67fb0294d/scratchpad"
 body.val().exportStep(f"{OUT}/haven_enclosure_inear_v3.step")
-top_half.val().exportStep(f"{OUT}/haven_enclosure_inear_top_v3.step")
-bottom_half.val().exportStep(f"{OUT}/haven_enclosure_inear_bottom_v3.step")
+left_half.val().exportStep(f"{OUT}/haven_enclosure_inear_left_v3.step")
+right_half.val().exportStep(f"{OUT}/haven_enclosure_inear_right_v3.step")
+
+print("--- shell split sanity check (both halves should be comparable, not a sliver) ---")
+lv, rv = left_half.val().Volume(), right_half.val().Volume()
+print(f"left volume: {lv:.1f} mm3, right volume: {rv:.1f} mm3, ratio: {max(lv,rv)/min(lv,rv):.2f}x")
 
 bb = body.val().BoundingBox()
 print("bbox:", round(bb.xlen, 1), round(bb.ylen, 1), round(bb.zlen, 1))

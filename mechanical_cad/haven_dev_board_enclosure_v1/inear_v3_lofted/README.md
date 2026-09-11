@@ -36,6 +36,27 @@ fit-checked in this version instead. Worth keeping in mind for whoever
 lays out the real board: it needs to be genuinely compact, not just
 "smaller than the case."
 
+## Bug found and fixed: the two-part split was bogus
+
+The original shell split (`top_half` = everything above `z=-20`,
+`bottom_half` = the remainder) was carried over from the earlier BTE
+enclosure, where a horizontal split made sense for that shape's
+orientation. It doesn't for this one: this body is a tall, mostly-vertical
+loft (head at z≈17 down to the nozzle base at z≈-14.5), so a Z-height cut
+put **99% of the volume in "top" and the leftover 1% sliver in "bottom"**
+(1820 mm³ vs 19 mm³, confirmed by importing both STEPs and comparing
+`.Volume()` directly — not something a render alone would necessarily
+flag, since "top" alone silhouettes like a complete shell). Not a
+two-part enclosure by any usable definition.
+
+Fixed by splitting through the tube's long axis instead — an `X=0` plane,
+giving left/right halves that both run the full head-to-nozzle length.
+Re-verified by volume: **917.4 mm³ vs 921.6 mm³ (1.00x ratio)**. All the
+existing port/PCB/battery checks were re-run against the corrected split
+and still pass. Files renamed `..._left_v3.step` / `..._right_v3.step` to
+describe what they actually are now, replacing the old (deleted)
+`..._top_v3.step` / `..._bottom_v3.step`.
+
 ## Verification
 
 Same discipline as v2: every port cut is verified by scanning many points
@@ -48,7 +69,8 @@ collisions. All pass with 0 collisions found.
 ## Still open
 
 Same caveats as the earlier versions: no real ear-fit/anthropometric data,
-no snap-fit/screw-boss features between the shell halves, no DFM pass,
+no snap-fit/screw-boss features holding the (now-correct) left/right
+halves together, no DFM pass,
 placeholder PCB/battery envelopes (not the real routed board outline —
 still needs the L-shaped/notched consideration from the BTE version's
 findings once a real board layout exists). Also still open: whether
@@ -59,7 +81,7 @@ put them on the case).
 ## Files
 
 - `haven_enclosure_inear_assembled_v3.step` — full shell, for viewing.
-- `haven_enclosure_inear_top_v3.step`, `haven_enclosure_inear_bottom_v3.step`
+- `haven_enclosure_inear_left_v3.step`, `haven_enclosure_inear_right_v3.step`
   — the two actual printable/moldable parts.
 - `generate_inear_enclosure_v3.py` — CadQuery source; the `stations` list
   at the top defines the whole silhouette.
