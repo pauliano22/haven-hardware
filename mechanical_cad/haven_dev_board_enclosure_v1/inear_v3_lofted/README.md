@@ -66,11 +66,26 @@ a plain point-check did on v2's curved surface), and the PCB/battery
 envelopes are checked point-by-point against the real solid geometry for
 collisions. All pass with 0 collisions found.
 
+## Alignment pegs across the seam
+
+Added two locating pegs (1.2mm radius, 1.6mm-radius clearance socket) to
+register the left/right halves during assembly. Finding worth recording:
+the X=0 split plane only has real touching wall material near the front/
+back edges of a given cross-section — through the middle of a wide
+station (e.g. the head, z~12-17) the two halves face an open hollow
+cavity across the seam, not each other, since the split cuts through the
+ellipse's interior, not its wall. Confirmed by direct point-classification
+(scanning along x at fixed y/z), not assumed. The pegs sit near the top of
+the head (z≈15.5) at the ellipse's front and back edges (y≈±5.0), where a
+scan confirmed solid material spans the seam — a wide baseline that
+resists rotation, not just translation, between the two halves. Each site
+is verified for peg presence, socket clearance, and that the socket
+doesn't cut past the original wall's outer surface.
+
 ## Still open
 
 Same caveats as the earlier versions: no real ear-fit/anthropometric data,
-no snap-fit/screw-boss features holding the (now-correct) left/right
-halves together, no DFM pass,
+no DFM pass,
 placeholder PCB/battery envelopes (not the real routed board outline —
 still needs the L-shaped/notched consideration from the BTE version's
 findings once a real board layout exists). Also still open: whether

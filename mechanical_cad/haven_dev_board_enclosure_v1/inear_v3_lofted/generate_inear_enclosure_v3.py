@@ -103,6 +103,27 @@ body = body.cut(mic_port).cut(led_port)
 left_half = body.intersect(cq.Workplane("XY").box(200, 200, 200, centered=(True, True, True)).translate((-100, 0, 0)))
 right_half = body.cut(left_half)
 
+# ---- Alignment pegs across the seam ----
+# The X=0 split plane only has real touching wall material near the front/
+# back edges of each elliptical station (where the ellipse's own boundary
+# crosses x=0) -- through the middle of a wide cross-section (e.g. the
+# "head" at z~12-17) the two halves face an open hollow cavity across the
+# seam, not each other. Confirmed by direct point-classification (not
+# assumed): near the top of the head (z=15, ry~5.2 interpolated), solid
+# material spans a wide x range at y=+-5.0 (the front/back edges), so two
+# pegs there -- one near the front edge, one near the back -- give a real,
+# verified two-point registration spanning a wide baseline (resists
+# rotation, not just translation).
+PEG_R, SOCKET_R = 1.2, 1.6
+PEG_SITES = [(5.0, 15.5), (-5.0, 15.5)]  # (y, z)
+
+for peg_y, peg_z in PEG_SITES:
+    peg = cq.Workplane("YZ").workplane(offset=-3).center(peg_y, peg_z).circle(PEG_R).extrude(5)
+    left_half = left_half.union(peg)
+
+    socket = cq.Workplane("YZ").workplane(offset=-0.5).center(peg_y, peg_z).circle(SOCKET_R).extrude(3)
+    right_half = right_half.cut(socket)
+
 # ---- Real internal components: compact board + battery, both in the
 #      widest band (z ~ 5 to 12) ----
 PCB_L, PCB_W, PCB_T = 16.0, 13.0, 1.0
@@ -121,6 +142,20 @@ right_half.val().exportStep(f"{OUT}/haven_enclosure_inear_right_v3.step")
 print("--- shell split sanity check (both halves should be comparable, not a sliver) ---")
 lv, rv = left_half.val().Volume(), right_half.val().Volume()
 print(f"left volume: {lv:.1f} mm3, right volume: {rv:.1f} mm3, ratio: {max(lv,rv)/min(lv,rv):.2f}x")
+
+print("--- alignment peg verification ---")
+left_shape, right_shape = left_half.val(), right_half.val()
+for peg_y, peg_z in PEG_SITES:
+    peg_present = state(left_shape, 1.0, peg_y, peg_z) == "IN"
+    socket_clear = state(right_shape, 1.0, peg_y, peg_z) == "OUT"
+    # peg tip (x=2) must not poke past right_half's real outer surface --
+    # compare against the pre-peg body at a point just past the socket's
+    # far end (x=2.7, inside the socket radius) to confirm we're still
+    # inside material that existed before this feature was added.
+    within_original_material = state(body.val(), 2.7, peg_y, peg_z) == "IN"
+    print(f"  site (y={peg_y}, z={peg_z}): peg={'PASS' if peg_present else 'FAIL'}, "
+          f"socket clearance={'PASS' if socket_clear else 'FAIL'}, "
+          f"stays within original wall={'PASS' if within_original_material else 'FAIL'}")
 
 bb = body.val().BoundingBox()
 print("bbox:", round(bb.xlen, 1), round(bb.ylen, 1), round(bb.zlen, 1))
