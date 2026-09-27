@@ -18,9 +18,16 @@ normally.
   design.
 - **`haven_dev_board/`** — Haven's own stripped-down custom dev board.
   `component_libraries/` holds Ultra Librarian Altium parts (symbol +
-  footprint + 3D model) for the chips it's built around: the ADAU1860 DSP
-  and the SPH0645LM4H-B MEMS mic. The board's own Altium project files go
-  directly in `haven_dev_board/` once that design exists.
+  footprint + 3D model) for the ADAU1860 DSP and the SPH0645LM4H-B MEMS mic.
+  **Mic caveat (2026-09-10):** the SPH0645LM4H-B is an *I2S* microphone. On
+  the OpenEarable-derived board the mic (SPH0641LU4H-1) is a *PDM* part wired
+  straight into the ADAU1860's DMIC pins (netlist: U13 → `PDMCLK`/`PDMDIN` →
+  U15 C4/C5), and the codec — not the nRF5340 — owns the mic → DSP → speaker
+  path. A stripped-down dev board that keeps that topology needs a PDM mic
+  library part (e.g. SPH0641LU4H-1), not the I2S one here. See
+  `haven-dev-board-kicad/HAVEN_HARDWARE_REVIEW.md` §0. The board's own
+  Altium project files go directly in `haven_dev_board/` once that design
+  exists.
 
 ## Why LFS
 
