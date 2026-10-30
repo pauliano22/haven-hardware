@@ -1,0 +1,52 @@
+[
+ {
+  "name": "v2_nestled",
+  "stl": "/home/paul22iac/projects/active/haven_workspace/hardware/mechanical_cad/v2_ergonomic_shell/v2_nestled_shell.stl",
+  "com": [
+   -3.0,
+   7.44,
+   4.21
+  ],
+  "mass_g": 4.61
+ },
+ {
+  "name": "v2_nestled_fin",
+  "stl": "/home/paul22iac/projects/active/haven_workspace/hardware/mechanical_cad/v2_ergonomic_shell/v2_nestled_fin_shell.stl",
+  "com": [
+   -3.04,
+   7.51,
+   4.21
+  ],
+  "mass_g": 4.634
+ },
+ {
+  "name": "v2_stacked",
+  "stl": "/home/paul22iac/projects/active/haven_workspace/hardware/mechanical_cad/v2_ergonomic_shell/v2_stacked_shell.stl",
+  "com": [
+   -5.56,
+   -0.1,
+   9.24
+  ],
+  "mass_g": 4.629
+ },
+ {
+  "name": "v2_stacked_fin",
+  "stl": "/home/paul22iac/projects/active/haven_workspace/hardware/mechanical_cad/v2_ergonomic_shell/v2_stacked_fin_shell.stl",
+  "com": [
+   -5.62,
+   -0.07,
+   9.25
+  ],
+  "mass_g": 4.656
+ },
+ {
+  "name": "block_reference",
+  "stl": "/home/paul22iac/projects/active/haven_workspace/hardware/mechanical_cad/v2_ergonomic_shell/ref_block_bud_in_ear_frame.stl",
+  "com": [
+   -3.9711731744182224,
+   1.4197735048970588,
+   8.845184790672924
+  ],
+  "mass_g": 5.122182223302574
+ }
+]

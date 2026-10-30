@@ -1,0 +1,237 @@
+{
+ "canal_axis_in": [
+  0.4173,
+  0.1578,
+  -0.895
+ ],
+ "canal_ant_deg": 25.0,
+ "canal_sup_deg": 10.0,
+ "v2_nestled": {
+  "layout": [
+   105.0,
+   10.5,
+   3.0
+  ],
+  "battery_center": [
+   -3.72,
+   9.76,
+   3.0
+  ],
+  "bbox_mm": [
+   16.59,
+   26.34,
+   16.86
+  ],
+  "max_lateral_above_E": 11.63,
+  "watertight": true,
+  "faces": 160322,
+  "checks": {
+   "driver": {
+    "clearance": 0.559,
+    "ok": true
+   },
+   "battery": {
+    "clearance": 0.556,
+    "ok": true
+   },
+   "bottom_parts": {
+    "clearance": 0.774,
+    "ok": true
+   },
+   "pcb": {
+    "clearance": 0.578,
+    "ok": true
+   },
+   "module": {
+    "clearance": 0.46,
+    "ok": true
+   },
+   "mic": {
+    "clearance": 0.444,
+    "ok": true
+   },
+   "magnet": {
+    "clearance": 0.568,
+    "ok": true
+   }
+  },
+  "mass_g": 4.61,
+  "shell_g": 1.51,
+  "com": [
+   -3.0,
+   7.44,
+   4.21
+  ]
+ },
+ "v2_nestled_fin": {
+  "layout": [
+   105.0,
+   10.5,
+   3.0
+  ],
+  "battery_center": [
+   -3.72,
+   9.76,
+   3.0
+  ],
+  "bbox_mm": [
+   18.91,
+   29.14,
+   16.86
+  ],
+  "max_lateral_above_E": 11.63,
+  "watertight": true,
+  "faces": 162546,
+  "checks": {
+   "driver": {
+    "clearance": 0.56,
+    "ok": true
+   },
+   "battery": {
+    "clearance": 0.556,
+    "ok": true
+   },
+   "bottom_parts": {
+    "clearance": 0.775,
+    "ok": true
+   },
+   "pcb": {
+    "clearance": 0.577,
+    "ok": true
+   },
+   "module": {
+    "clearance": 0.459,
+    "ok": true
+   },
+   "mic": {
+    "clearance": 0.443,
+    "ok": true
+   },
+   "magnet": {
+    "clearance": 0.571,
+    "ok": true
+   }
+  },
+  "mass_g": 4.634,
+  "shell_g": 1.534,
+  "com": [
+   -3.04,
+   7.51,
+   4.21
+  ]
+ },
+ "v2_stacked": {
+  "layout": [
+   -7.0,
+   0.0,
+   9.5
+  ],
+  "battery_center": [
+   -7.0,
+   0.0,
+   9.5
+  ],
+  "bbox_mm": [
+   21.63,
+   15.8,
+   23.34
+  ],
+  "max_lateral_above_E": 18.1,
+  "watertight": true,
+  "faces": 165296,
+  "checks": {
+   "driver": {
+    "clearance": 0.538,
+    "ok": true
+   },
+   "battery": {
+    "clearance": 0.57,
+    "ok": true
+   },
+   "bottom_parts": {
+    "clearance": 0.515,
+    "ok": true
+   },
+   "pcb": {
+    "clearance": 0.494,
+    "ok": true
+   },
+   "module": {
+    "clearance": 0.446,
+    "ok": true
+   },
+   "mic": {
+    "clearance": 0.446,
+    "ok": true
+   },
+   "magnet": {
+    "clearance": 0.556,
+    "ok": true
+   }
+  },
+  "mass_g": 4.629,
+  "shell_g": 1.529,
+  "com": [
+   -5.56,
+   -0.1,
+   9.24
+  ]
+ },
+ "v2_stacked_fin": {
+  "layout": [
+   -7.0,
+   0.0,
+   9.5
+  ],
+  "battery_center": [
+   -7.0,
+   0.0,
+   9.5
+  ],
+  "bbox_mm": [
+   25.49,
+   16.17,
+   23.26
+  ],
+  "max_lateral_above_E": 18.03,
+  "watertight": true,
+  "faces": 167740,
+  "checks": {
+   "driver": {
+    "clearance": 0.536,
+    "ok": true
+   },
+   "battery": {
+    "clearance": 0.574,
+    "ok": true
+   },
+   "bottom_parts": {
+    "clearance": 0.517,
+    "ok": true
+   },
+   "pcb": {
+    "clearance": 0.503,
+    "ok": true
+   },
+   "module": {
+    "clearance": 0.456,
+    "ok": true
+   },
+   "mic": {
+    "clearance": 0.42,
+    "ok": true
+   },
+   "magnet": {
+    "clearance": 0.585,
+    "ok": true
+   }
+  },
+  "mass_g": 4.656,
+  "shell_g": 1.556,
+  "com": [
+   -5.62,
+   -0.07,
+   9.25
+  ]
+ }
+}
