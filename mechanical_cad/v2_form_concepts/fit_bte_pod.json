@@ -1,0 +1,104 @@
+[
+ {
+  "subject": 48,
+  "seated": true,
+  "theta": 0,
+  "height_above_E": 4.0,
+  "center_head": [
+   -29.12,
+   -77.87,
+   -0.17
+  ],
+  "behind_E_mm": 26.0,
+  "center_lateral_of_E": 10.0,
+  "max_pen": 0.44,
+  "contact_mm2": 121.5,
+  "pinna_side_contact_mm2": 12.6,
+  "hidden_from_side_pct": 0.0
+ },
+ {
+  "subject": 81,
+  "seated": true,
+  "theta": -20,
+  "height_above_E": 12.0,
+  "center_head": [
+   -30.92,
+   -77.67,
+   4.17
+  ],
+  "behind_E_mm": 35.0,
+  "center_lateral_of_E": 13.1,
+  "max_pen": 0.47,
+  "contact_mm2": 117.3,
+  "pinna_side_contact_mm2": 12.6,
+  "hidden_from_side_pct": 0.0
+ },
+ {
+  "subject": 30,
+  "seated": true,
+  "theta": -20,
+  "height_above_E": 12.0,
+  "center_head": [
+   -32.18,
+   -79.23,
+   6.46
+  ],
+  "behind_E_mm": 29.0,
+  "center_lateral_of_E": 13.5,
+  "max_pen": 0.47,
+  "contact_mm2": 117.3,
+  "pinna_side_contact_mm2": 21.0,
+  "hidden_from_side_pct": 0.0
+ },
+ {
+  "subject": 3,
+  "seated": true,
+  "theta": 20,
+  "height_above_E": 4.0,
+  "center_head": [
+   -30.04,
+   -74.39,
+   0.24
+  ],
+  "behind_E_mm": 23.0,
+  "center_lateral_of_E": 6.9,
+  "max_pen": 0.42,
+  "contact_mm2": 247.2,
+  "pinna_side_contact_mm2": 62.9,
+  "hidden_from_side_pct": 28.3
+ },
+ {
+  "subject": 12,
+  "seated": true,
+  "theta": 20,
+  "height_above_E": 4.0,
+  "center_head": [
+   -33.44,
+   -75.99,
+   -3.84
+  ],
+  "behind_E_mm": 29.0,
+  "center_lateral_of_E": 9.7,
+  "max_pen": 0.44,
+  "contact_mm2": 146.7,
+  "pinna_side_contact_mm2": 25.1,
+  "hidden_from_side_pct": 2.5
+ },
+ {
+  "subject": 57,
+  "seated": true,
+  "theta": -20,
+  "height_above_E": 28.0,
+  "center_head": [
+   -31.83,
+   -80.1,
+   23.2
+  ],
+  "behind_E_mm": 35.0,
+  "center_lateral_of_E": 17.5,
+  "max_pen": 0.38,
+  "contact_mm2": 121.5,
+  "pinna_side_contact_mm2": 16.8,
+  "hidden_from_side_pct": 0.0
+ }
+]
