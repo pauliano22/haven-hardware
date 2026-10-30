@@ -135,6 +135,26 @@ standard 4.5 mm-bore tips; resin for skin contact, e.g. Formlabs BioMed Clear) a
 seat depth, pressure points at 15 min / 1 h, retention when chewing and shaking the head,
 protrusion (photo), and seal (a low-frequency hearing-test-app check with and without the bud).
 
+## Smaller variant (2026-10-30)
+
+Paul asked to see how much the parts cost in size. `HAVEN_VARIANT=small python3
+generate_v2_ergonomic_shell.py stacked` builds the same stacked layout with a VARTA CP0854 cell
+(Ø8.0 × 5.4 mm, ~40 mAh, about 5 h loud / 11 h quiet) and a representative 6 mm 16–32 Ω driver
+(Ø6.0 × 3.0 mm). Outputs carry a `_small` suffix (`v2_stacked_small_shell.stl/.step`,
+`parts_stacked_small/`, `geometry.json` and `fit_results.json` entries); the current design's
+files are untouched. Fit search: `python3 evaluate_fit.py <ears dir> v2_stacked_small` (named jobs
+are merged into the existing results). Masses are approximate (CP0854 ~1.1 g, 6 mm driver ~0.3 g).
+
+| Variant | Bounding box (mm) | Mass | Worst / mean compression | Mean area > 1 mm | Protrusion pp3 / mean | Battery |
+|---|---|---|---|---|---|---|
+| Current (CP1254 + 8 mm) | 21.6 × 15.8 × 23.3 | 4.63 g | 4.5 / 3.7 mm | 323 mm² | +7.7 / +7.8 mm | ≈ 8–10 h loud |
+| Smaller (CP0854 + 6 mm) | 22.1 × 12.8 × 22.3 | 3.58 g | 4.6 / 3.3 mm | 240 mm² | +7.5 / +5.8 mm | ≈ 5 h loud |
+
+The smaller cell takes 3 mm off the depth and 1 g off the weight, and sits 2 mm lower on average,
+but the 13 × 9 mm board now sets the length, so the bud is not shorter, and the smallest ear
+(pp48) is still compressed by ~4.6 mm. Paul's decision on 2026-10-30 stands: keep the current
+parts; this variant is for comparison in the explorer.
+
 ## What would actually make it smaller
 
 The parts set the size. Ranked by effect on fit, all needing a schematic/stock check first:

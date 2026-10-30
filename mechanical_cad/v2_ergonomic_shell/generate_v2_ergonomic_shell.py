@@ -58,6 +58,16 @@ MASS = dict(battery=1.7, module=0.4, driver=0.5, pcb=0.17, bottom_parts=0.10,
             magnet=0.11, mic=0.02, tip=0.10)
 RESIN_DENSITY = 1.2e-3               # g/mm^3
 
+# Design variant. HAVEN_VARIANT=small swaps in the smaller battery and driver Paul asked to see
+# (VARTA CP0854, Ø8.0 x 5.4 mm, ~40 mAh, about 5 h loud; a representative 6 mm 16-32 ohm
+# driver). Outputs get a "_small" suffix so the current design's files are untouched.
+VARIANT = os.environ.get("HAVEN_VARIANT", "")
+SUFFIX = "_small" if VARIANT == "small" else ""
+if VARIANT == "small":
+    BAT_D, BAT_H = 8.0, 5.4          # VARTA CP0854
+    DRV_D, DRV_H = 6.0, 3.0          # 6 mm 16-32 ohm dynamic driver (representative)
+    MASS.update(battery=1.1, driver=0.3)   # CP0854 ~1.1 g (approx.), 6 mm driver ~0.3 g (est.)
+
 
 def unit(v):
     v = np.asarray(v, float)
@@ -402,14 +412,15 @@ def main(modes=("stacked", "nestled")):
     report = json.load(open(gp)) if os.path.exists(gp) else {}
     report.update(canal_axis_in=N_IN.round(4).tolist(), canal_ant_deg=CANAL_ANT_DEG, canal_sup_deg=CANAL_SUP_DEG)
     for mode in modes:
-        if mode not in cache:
-            cache[mode] = [float(x) for x in choose_layout(mode)]
+        ck = mode + SUFFIX
+        if ck not in cache:
+            cache[ck] = [float(x) for x in choose_layout(mode)]
             json.dump(cache, open(cache_p, "w"), indent=1)
-        parts, key, spec = spec_from_layout(mode, *cache[mode])
-        print(mode, "layout", cache[mode], "gap", round(min_gap(parts)[0], 3), flush=True)
-        for fin in (False, True):
+        parts, key, spec = spec_from_layout(mode, *cache[ck])
+        print(ck, "layout", cache[ck], "gap", round(min_gap(parts)[0], 3), flush=True)
+        for fin in ((False,) if SUFFIX else (False, True)):
             t = time.time()
-            tag = f"v2_{mode}" + ("_fin" if fin else "")
+            tag = f"v2_{mode}{SUFFIX}" + ("_fin" if fin else "")
             for shift in (0.0, 0.07, 0.13):   # re-sample if marching cubes pinches an edge
                 fd = make_field(parts, key, spec, fin=fin, shift=shift)
                 mesh = mesh_from_field(fd["field"], fd["axes"])
@@ -417,9 +428,9 @@ def main(modes=("stacked", "nestled")):
                     break
             mesh.export(os.path.join(HERE, f"{tag}_shell.stl"))
             mesh_to_step(mesh, os.path.join(HERE, f"{tag}_shell.step"))
-            export_parts(parts, fd, os.path.join(HERE, f"parts_{mode}"))
+            export_parts(parts, fd, os.path.join(HERE, f"parts_{mode}{SUFFIX}"))
             ext = mesh.extents
-            rep = dict(layout=cache[mode], battery_center=key["bat_c"].round(2).tolist(),
+            rep = dict(layout=cache[ck], variant=VARIANT or "current", battery=[BAT_D, BAT_H], driver=[DRV_D, DRV_H], battery_center=key["bat_c"].round(2).tolist(),
                        bbox_mm=[round(float(x), 2) for x in ext], max_lateral_above_E=round(float(mesh.bounds[1][2]), 2),
                        watertight=bool(mesh.is_watertight), faces=int(len(mesh.faces)),
                        checks=checks(fd, parts), **mass_props(parts, mesh))

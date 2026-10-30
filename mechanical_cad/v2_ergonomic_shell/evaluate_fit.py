@@ -136,11 +136,16 @@ def evaluate(shell_path, com_bud, mass_g, ears_dir, subjects, n_pts=1800):
 
 
 if __name__ == "__main__":
-    ears_dir = sys.argv[1]
+    # evaluate_fit.py <ears dir> [job name ...]: with names, only those jobs run and their rows
+    # are merged into the existing fit_results.json instead of replacing it.
+    ears_dir, only = sys.argv[1], set(sys.argv[2:])
     meta = json.load(open(os.path.join(ears_dir, "ears.json")))
     subjects = [int(k) for k in meta]
     jobs = json.load(open(os.path.join(HERE, "fit_jobs.json")))
-    out = {}
+    res_p = os.path.join(HERE, "fit_results.json")
+    out = json.load(open(res_p)) if only and os.path.exists(res_p) else {}
     for job in jobs:
+        if only and job["name"] not in only:
+            continue
         out[job["name"]] = evaluate(job["stl"], job["com"], job["mass_g"], ears_dir, subjects)
-    json.dump(out, open(os.path.join(HERE, "fit_results.json"), "w"), indent=1)
+    json.dump(out, open(res_p, "w"), indent=1)

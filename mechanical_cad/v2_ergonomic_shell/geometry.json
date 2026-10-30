@@ -233,5 +233,71 @@
    -0.07,
    9.25
   ]
+ },
+ "v2_stacked_small": {
+  "layout": [
+   -5.5,
+   0.0,
+   8.5
+  ],
+  "variant": "small",
+  "battery": [
+   8.0,
+   5.4
+  ],
+  "driver": [
+   6.0,
+   3.0
+  ],
+  "battery_center": [
+   -5.5,
+   0.0,
+   8.5
+  ],
+  "bbox_mm": [
+   22.05,
+   12.78,
+   22.34
+  ],
+  "max_lateral_above_E": 17.1,
+  "watertight": true,
+  "faces": 137544,
+  "checks": {
+   "driver": {
+    "clearance": 0.532,
+    "ok": true
+   },
+   "battery": {
+    "clearance": 0.585,
+    "ok": true
+   },
+   "bottom_parts": {
+    "clearance": 0.501,
+    "ok": true
+   },
+   "pcb": {
+    "clearance": 0.506,
+    "ok": true
+   },
+   "module": {
+    "clearance": 0.447,
+    "ok": true
+   },
+   "mic": {
+    "clearance": 0.423,
+    "ok": true
+   },
+   "magnet": {
+    "clearance": 0.559,
+    "ok": true
+   }
+  },
+  "mass_g": 3.583,
+  "shell_g": 1.283,
+  "com": [
+   -5.01,
+   -0.07,
+   8.97
+  ]
  }
 }
