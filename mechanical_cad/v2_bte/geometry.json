@@ -1,0 +1,178 @@
+{
+ "inear_A": {
+  "bbox_mm": [
+   13.71,
+   15.83,
+   17.62
+  ],
+  "watertight": true,
+  "min_part_gap": [
+   0.3,
+   [
+    "driver",
+    "board"
+   ]
+  ],
+  "checks": {
+   "driver": {
+    "clearance": 0.538,
+    "ok": true
+   },
+   "board": {
+    "clearance": 0.537,
+    "ok": true
+   },
+   "mic": {
+    "clearance": 0.613,
+    "ok": true
+   },
+   "cable_boot": {
+    "clearance": 0.507,
+    "ok": true
+   }
+  },
+  "mass_g": 1.58,
+  "shell_g": 0.78,
+  "com": [
+   -1.93,
+   -0.11,
+   4.0
+  ],
+  "cable_exit": [
+   -5.929,
+   7.519,
+   9.726
+  ],
+  "cable_dir": [
+   -0.3215,
+   0.9186,
+   0.2297
+  ],
+  "cable_hole_d": 1.7
+ },
+ "inear_B": {
+  "bbox_mm": [
+   13.71,
+   14.87,
+   17.02
+  ],
+  "watertight": true,
+  "min_part_gap": [
+   0.652,
+   [
+    "driver",
+    "cable_boot"
+   ]
+  ],
+  "checks": {
+   "driver": {
+    "clearance": 0.537,
+    "ok": true
+   },
+   "cable_boot": {
+    "clearance": 0.502,
+    "ok": true
+   }
+  },
+  "mass_g": 1.481,
+  "shell_g": 0.741,
+  "com": [
+   -1.75,
+   -0.21,
+   3.67
+  ],
+  "cable_exit": [
+   -5.524,
+   6.632,
+   9.318
+  ],
+  "cable_dir": [
+   -0.3215,
+   0.9186,
+   0.2297
+  ],
+  "cable_hole_d": 1.4
+ },
+ "pod": {
+  "bbox_mm": [
+   19.53,
+   33.2,
+   11.4
+  ],
+  "watertight": true,
+  "min_part_gap": [
+   0.4,
+   [
+    "pcb",
+    "magnet"
+   ]
+  ],
+  "checks": {
+   "pcb": {
+    "clearance": 0.436,
+    "ok": true
+   },
+   "bottom_parts": {
+    "clearance": 0.477,
+    "ok": true
+   },
+   "module": {
+    "clearance": 0.473,
+    "ok": true
+   },
+   "battery": {
+    "clearance": 0.542,
+    "ok": true
+   },
+   "magnet": {
+    "clearance": 0.525,
+    "ok": true
+   },
+   "cable_boot": {
+    "clearance": 0.515,
+    "ok": true
+   },
+   "pod_mic": {
+    "clearance": 0.634,
+    "ok": true
+   }
+  },
+  "mass_g": 5.443,
+  "shell_g": 1.913,
+  "com": [
+   0.17,
+   -3.05,
+   2.12
+  ],
+  "cable_entry": [
+   8.5,
+   8.364,
+   1.836
+  ],
+  "cable_dir": [
+   0.4801,
+   0.8729,
+   0.0873
+  ],
+  "board_mm": [
+   13.0,
+   27.0,
+   0.8
+  ],
+  "battery_life": {
+   "loud_h": [
+    9.1,
+    12.8
+   ],
+   "quiet_h": [
+    19.4,
+    27.4
+   ]
+  },
+  "pod_mic_xy": [
+   -4.9,
+   7.0
+  ],
+  "module_x": 0.8
+ }
+}
