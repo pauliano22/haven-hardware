@@ -489,7 +489,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461349.056597222
+2461349.4196990742
   9
 $TDUCREATE
  40
@@ -497,7 +497,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461349.056597222
+2461349.4196990742
   9
 $TDUUPDATE
  40
@@ -549,7 +549,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-9E
+A2
   9
 $SURFTAB1
  70
@@ -929,11 +929,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{E83FD894-1C8E-436B-9728-B789646C4BA7}
+{9B3BCB16-C43D-4950-8674-8AC19DDEECC1}
   9
 $VERSIONGUID
   2
-{724C64E6-4982-422A-BA0C-91C17F20D8CE}
+{269040B6-9994-40AF-891F-9E41A03B26DC}
   9
 $EXTNAMES
 290
@@ -2233,7 +2233,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-5
+7
   0
 LAYER
   5
@@ -2319,7 +2319,7 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-KEEPOUT_TOP_MIC
+BOTTOM_MIC
  70
 0
  62
@@ -2336,6 +2336,54 @@ Continuous
 LAYER
   5
 8C
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+MIC_PORT_HOLE
+ 70
+0
+ 62
+7
+  6
+Continuous
+370
+-3
+390
+13
+347
+21
+  0
+LAYER
+  5
+8D
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+KEEPOUT_TOP_GASKET
+ 70
+0
+ 62
+7
+  6
+Continuous
+370
+-3
+390
+13
+347
+21
+  0
+LAYER
+  5
+8E
 330
 1
 100
@@ -3157,7 +3205,7 @@ ACAD
   0
 APPID
   5
-9B
+9F
 330
 3
 100
@@ -3171,7 +3219,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-9C
+A0
 330
 3
 100
@@ -5283,54 +5331,6 @@ ENTITIES
   0
 LINE
   5
-8D
-330
-17
-100
-AcDbEntity
-  8
-Edge.Cuts
-100
-AcDbLine
- 10
--2.2
- 20
--3.0
- 30
-0.0
- 11
-2.2
- 21
--3.0
- 31
-0.0
-  0
-LINE
-  5
-8E
-330
-17
-100
-AcDbEntity
-  8
-Edge.Cuts
-100
-AcDbLine
- 10
-3.0
- 20
--2.2
- 30
-0.0
- 11
-3.0
- 21
-2.2
- 31
-0.0
-  0
-LINE
-  5
 8F
 330
 17
@@ -5341,6 +5341,54 @@ Edge.Cuts
 100
 AcDbLine
  10
+-2.2
+ 20
+-3.0
+ 30
+0.0
+ 11
+2.2
+ 21
+-3.0
+ 31
+0.0
+  0
+LINE
+  5
+90
+330
+17
+100
+AcDbEntity
+  8
+Edge.Cuts
+100
+AcDbLine
+ 10
+3.0
+ 20
+-2.2
+ 30
+0.0
+ 11
+3.0
+ 21
+2.2
+ 31
+0.0
+  0
+LINE
+  5
+91
+330
+17
+100
+AcDbEntity
+  8
+Edge.Cuts
+100
+AcDbLine
+ 10
 2.2
  20
 3.0
@@ -5355,7 +5403,7 @@ AcDbLine
   0
 LINE
   5
-90
+92
 330
 17
 100
@@ -5379,7 +5427,7 @@ AcDbLine
   0
 ARC
   5
-91
+93
 330
 17
 100
@@ -5405,7 +5453,7 @@ AcDbArc
   0
 ARC
   5
-92
+94
 330
 17
 100
@@ -5431,7 +5479,7 @@ AcDbArc
   0
 ARC
   5
-93
+95
 330
 17
 100
@@ -5457,7 +5505,7 @@ AcDbArc
   0
 ARC
   5
-94
+96
 330
 17
 100
@@ -5483,13 +5531,13 @@ AcDbArc
   0
 LWPOLYLINE
   5
-95
+97
 330
 17
 100
 AcDbEntity
   8
-KEEPOUT_TOP_MIC
+BOTTOM_MIC
 100
 AcDbPolyline
  90
@@ -5517,9 +5565,49 @@ AcDbPolyline
  20
 -1.325
   0
+CIRCLE
+  5
+98
+330
+17
+100
+AcDbEntity
+  8
+MIC_PORT_HOLE
+100
+AcDbCircle
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.35
+  0
+CIRCLE
+  5
+99
+330
+17
+100
+AcDbEntity
+  8
+KEEPOUT_TOP_GASKET
+100
+AcDbCircle
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+1.4
+  0
 TEXT
   5
-96
+9A
 330
 17
 100
@@ -5549,7 +5637,7 @@ AcDbText
   0
 TEXT
   5
-97
+9B
 330
 17
 100
@@ -5567,7 +5655,7 @@ AcDbText
  40
 0.4
   1
-Top (lateral) face: SPH0641LU4H-1, aligned with the shell's mic hole. Confirm the port side in the
+Bottom (medial, driver-side) face: SPH0641LU4H-1 (bottom port, datasheet) over a 0.7 mm acoustic
  11
 4.0
  21
@@ -5579,7 +5667,7 @@ AcDbText
   0
 TEXT
   5
-98
+9C
 330
 17
 100
@@ -5597,7 +5685,7 @@ AcDbText
  40
 0.4
   1
-Knowles datasheet: if it is bottom-port, add a 0.6-0.8 mm acoustic hole through the board under the port.
+hole through the board; the hole lines up with the shell's mic hole on the lateral side.
  11
 4.0
  21
@@ -5609,7 +5697,7 @@ AcDbText
   0
 TEXT
   5
-99
+9D
 330
 17
 100
@@ -5627,7 +5715,7 @@ AcDbText
  40
 0.4
   1
-Bottom (driver) face: driver solder pads SPK+/SPK-. Edge toward the cable boot: 6 cable pads
+Driver pads SPK+/SPK- on the bottom face beside the mic. Edge toward the cable boot: 6 cable pads
  11
 4.0
  21
@@ -5639,7 +5727,7 @@ AcDbText
   0
 TEXT
   5
-9A
+9E
 330
 17
 100
@@ -5657,7 +5745,7 @@ AcDbText
  40
 0.4
   1
-(SPK+, SPK-, MIC_VDD, GND, PDM_CLK, PDM_DATA). Component height <= 1.0 mm on the top face.
+(SPK+, SPK-, MIC_VDD, GND, PDM_CLK, PDM_DATA). Top face: keep KEEPOUT_TOP_GASKET clear (gasket seat).
  11
 4.0
  21
@@ -6757,7 +6845,7 @@ CREATED_BY_EZDXF
   3
 WRITTEN_BY_EZDXF
 350
-9D
+A1
   0
 DICTIONARYVAR
   5
@@ -6769,7 +6857,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-11-04T06:21:30.420700+00:00
+1.4.4 @ 2026-11-04T15:04:22.944972+00:00
   0
 VISUALSTYLE
   5
@@ -7473,7 +7561,7 @@ X-Ray
   0
 DICTIONARYVAR
   5
-9D
+A1
 330
 2D
 100
@@ -7481,7 +7569,7 @@ DictionaryVariables
 280
 0
   1
-1.4.4 @ 2026-11-04T06:21:30.434292+00:00
+1.4.4 @ 2026-11-04T15:04:22.953062+00:00
   0
 ENDSEC
   0

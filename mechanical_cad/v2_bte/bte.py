@@ -52,12 +52,14 @@ def inear_parts(variant="A"):
     Rh = cc.head_plane_R(cc.OUT)
     back = cc.FRONT - gen.N_IN * DRV[1]
     if variant == "A":
-        board = Box("board", back + cc.OUT * (GAP + 0.3), INEAR_BOARD, Rh, 0.03)
-        mic = Box("mic", back + cc.OUT * (GAP + 0.6 + cc.MIC[2] / 2), cc.MIC, Rh, 0.02)
-        boot_base = back + cc.OUT * 2.3 + Y_ * 3.0
+        # SPH0641LU4H-1 is bottom-port: it sits on the board's medial (driver-side) face and hears
+        # through a 0.7 mm hole in the board, which lines up with the shell's mic hole above it.
+        mic = Box("mic", back + cc.OUT * (GAP + cc.MIC[2] / 2), cc.MIC, Rh, 0.02)
+        board = Box("board", back + cc.OUT * (GAP + cc.MIC[2] + 0.1 + 0.3), INEAR_BOARD, Rh, 0.03)
+        boot_base = back + cc.OUT * (2.3 + cc.MIC[2] + 0.1) + Y_ * 3.0
         boot = Cyl("cable_boot", boot_base, CABLE_DIR, 2.4, 5.0, 0.05)
         parts = [drv, board, mic, boot]
-        kw = dict(nozzle_B=cc.B, mic=(mic.c, cc.OUT), pads=None)
+        kw = dict(nozzle_B=cc.B, mic=(board.c + cc.OUT * 0.3, cc.OUT), pads=None)
         blen = 5.0
     else:
         boot_base = back + cc.OUT * 2.1 + Y_ * 3.0
@@ -171,16 +173,18 @@ def pod_dxf(path, bat_cy):
 def inear_dxf(path):
     doc = ezdxf.new("R2010", setup=True)
     doc.units = ezdxf.units.MM
-    for name in ("Edge.Cuts", "KEEPOUT_TOP_MIC", "NOTES"):
+    for name in ("Edge.Cuts", "BOTTOM_MIC", "MIC_PORT_HOLE", "KEEPOUT_TOP_GASKET", "NOTES"):
         doc.layers.add(name)
     msp = doc.modelspace()
     rounded_rect(msp, INEAR_BOARD[0], INEAR_BOARD[1], 0.8, "Edge.Cuts")
-    rect(msp, 0, 0, cc.MIC[0], cc.MIC[1], "KEEPOUT_TOP_MIC")
+    rect(msp, 0, 0, cc.MIC[0], cc.MIC[1], "BOTTOM_MIC")
+    msp.add_circle((0, 0), 0.35, dxfattribs=dict(layer="MIC_PORT_HOLE"))
+    msp.add_circle((0, 0), MIC_TUBE_R + 0.2, dxfattribs=dict(layer="KEEPOUT_TOP_GASKET"))
     notes = ["Haven v2 BTE in-ear board, 6 x 6 mm, 0.6 mm thick, origin = centre.",
-             "Top (lateral) face: SPH0641LU4H-1, aligned with the shell's mic hole. Confirm the port side in the",
-             "Knowles datasheet: if it is bottom-port, add a 0.6-0.8 mm acoustic hole through the board under the port.",
-             "Bottom (driver) face: driver solder pads SPK+/SPK-. Edge toward the cable boot: 6 cable pads",
-             "(SPK+, SPK-, MIC_VDD, GND, PDM_CLK, PDM_DATA). Component height <= 1.0 mm on the top face."]
+             "Bottom (medial, driver-side) face: SPH0641LU4H-1 (bottom port, datasheet) over a 0.7 mm acoustic",
+             "hole through the board; the hole lines up with the shell's mic hole on the lateral side.",
+             "Driver pads SPK+/SPK- on the bottom face beside the mic. Edge toward the cable boot: 6 cable pads",
+             "(SPK+, SPK-, MIC_VDD, GND, PDM_CLK, PDM_DATA). Top face: keep KEEPOUT_TOP_GASKET clear (gasket seat)."]
     for i, t in enumerate(notes):
         msp.add_text(t, height=0.4, dxfattribs=dict(layer="NOTES")).set_placement((4.0, 3.0 - i * 0.8))
     doc.saveas(path)

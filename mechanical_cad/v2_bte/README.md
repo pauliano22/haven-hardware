@@ -14,7 +14,7 @@ on a real ear.
 
 | Part | Size (mm) | Mass | Contents |
 |---|---|---|---|
-| In-ear unit **A** (mic in ear, primary) | 13.7 × 15.8 × 17.6 | 1.6 g | Ole Wolff OWR-0860T-16 driver (Ø9 × 4.5), 6 × 6 mm 2-layer board with the SPH0641 mic (port lateral) and cable pads, strain-relief boot, 1.7 mm cable hole for the 1.5 mm 6-wire harness |
+| In-ear unit **A** (mic in ear, primary) | 13.8 × 15.7 × 18.6 | 1.6 g | Ole Wolff OWR-0860T-16 driver (Ø9 × 4.5), 6 × 6 mm 2-layer board. The SPH0641 is bottom-port, so it sits under the board (driver side) and hears through a plated hole in the board that lines up with the shell's mic hole. Cable pads on top, strain-relief boot, 1.7 mm cable hole for the 1.5 mm 6-wire harness |
 | In-ear unit **B** (fallback: mic on pod) | 13.7 × 14.9 × 17.0 | 1.5 g | Driver only, 1.4 mm hole for a standard 2-wire receiver cable |
 | Pod (L and R mirrored) | 19.5 × 33.2 × 11.4 | 5.4 g | 13 × 27 × 0.8 mm board; VARTA CP1454 and MDBT53V-1M on the lateral face (module antenna flush with the top edge); codec, PMIC and passives on the medial face, ≤ 1.0 mm tall; optional pod mic U14 port; 2 charging pads + magnet on the bottom end |
 
@@ -29,26 +29,27 @@ canal points excluded.
 
 | Head | In-ear A max compression | Area > 1 mm | Protrusion past tragus | Pod max compression | Cable length | Cable clears skin by 1 mm |
 |---|---|---|---|---|---|---|
-| pp48 | 3.9 mm | 321 mm² | −1.5 mm | 0.50 mm | 56.4 mm | no (0.34) |
-| pp81 | 3.8 mm | 197 mm² | +0.7 mm | 0.46 mm | 50.1 mm | yes |
-| pp30 | 2.8 mm | 131 mm² | +0.8 mm | 0.45 mm | 48.1 mm | yes |
-| pp3 | 3.2 mm | 153 mm² | +1.1 mm | 0.46 mm | 46.5 mm | yes |
-| pp12 | 2.2 mm | 120 mm² | −5.3 mm | 0.49 mm | 52.4 mm | no (touches) |
-| pp57 | 3.6 mm | 271 mm² | −1.7 mm | 0.47 mm | 48.4 mm | no (touches) |
+| pp48 | 4.4 mm | 323 mm² | −0.7 mm | 0.50 mm | 57.2 mm | no (0.18) |
+| pp81 | 3.8 mm | 199 mm² | +3.4 mm | 0.46 mm | 43.7 mm | yes |
+| pp30 | 2.8 mm | 138 mm² | +0.5 mm | 0.45 mm | 43.5 mm | yes |
+| pp3 | 3.3 mm | 144 mm² | +1.0 mm | 0.46 mm | 43.3 mm | yes |
+| pp12 | 2.2 mm | 137 mm² | −4.6 mm | 0.49 mm | 51.5 mm | no (touches) |
+| pp57 | 3.6 mm | 264 mm² | −0.7 mm | 0.47 mm | 47.9 mm | no (touches) |
 
-Variant B scores almost the same as A (2.2–3.9 mm, 109–286 mm²). The mic board barely changes the
-fit.
+Variant B (2.2–3.9 mm, 109–286 mm²) scores almost the same as A. Moving the bottom-port mic under
+the board made A 1 mm deeper, and its worst-ear compression went from 3.9 to 4.4 mm (pp48). The
+mean area barely moved (199 → 201 mm²).
 
 What this means:
 - **Pod: fine.** It presses less than 0.5 mm into every head.
 - **In-ear unit: better than the earbud shells, but not done.** Area pressed over 1 mm averages
-  199 mm², against 323 mm² for the best earbud shell (v2 stacked). The unit sits flush with or
-  inside the tragus instead of sticking out about 8 mm. But it still presses 2–4 mm at one spot
+  201 mm², against 323 mm² for the best earbud shell (v2 stacked). The unit sits flush with or
+  inside the tragus instead of sticking out about 8 mm. But it still presses 2–4.4 mm at one spot
   in every head. It is a rigid shell in a rigid scan, so the real number is lower: skin gives,
   and a soft tip takes up the canal. Still, the shell needs another pass before people wear it:
   a smaller concha body, or S/M/L sizes the way hearing-aid receivers come in sizes.
-- **Cable: 46–56 mm over the helix root.** Make the harness 55 mm from the boot to the pod, or
-  offer 50 / 56 mm sizes. Where it "touches", it rests on the skin at the helix root, which is
+- **Cable: 43–57 mm over the helix root.** Make the harness 55 mm from the boot to the pod, or
+  offer 45 / 57 mm sizes. Where it "touches", it rests on the skin at the helix root, which is
   how every receiver-in-canal hearing aid sits.
 
 ## Board outlines (for layout)
@@ -57,8 +58,9 @@ What this means:
   footprint), `KEEPOUT_TOP_MODULE`, `ANTENNA_EDGE` (top edge, module antenna flush),
   `MIC_PORT_HOLE` + `KEEPOUT_TOP_GASKET` (pod mic U14 port), and `NOTES`. Bottom (medial) side
   parts: ≤ 1.0 mm tall.
-- `board_inear_outline.dxf` is 6 × 6 mm, 2-layer, with `KEEPOUT_TOP_MIC`. The SPH0641 goes on
-  the lateral side, and the cable and driver pads go on the other side.
+- `board_inear_outline.dxf` is 6 × 6 mm, 2-layer. Layers: `BOTTOM_MIC` (SPH0641 on the driver
+  side), `MIC_PORT_HOLE` (0.7 mm, board centre) and `KEEPOUT_TOP_GASKET`. Laid out in
+  haven-dev-board-kicad PR #18.
 
 ## Files
 
@@ -73,6 +75,7 @@ Regenerate:
 ```
 python3 bte.py                                   # shells, parts, DXFs, geometry.json
 python3 fit_bte.py ~/.cache/hutubs/ears_bte      # fit (slow, ~1 h)
+python3 refit_inear_A.py ~/.cache/hutubs/ears_bte # re-score unit A only
 python3 cable_route.py ~/.cache/hutubs/ears_bte  # cable routes into fit_bte.json
 python3 render_bte.py ~/.cache/hutubs/ears_bte   # renders
 ```

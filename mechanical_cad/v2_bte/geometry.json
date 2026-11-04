@@ -1,16 +1,16 @@
 {
  "inear_A": {
   "bbox_mm": [
-   13.71,
-   15.83,
-   17.62
+   13.76,
+   15.67,
+   18.6
   ],
   "watertight": true,
   "min_part_gap": [
    0.3,
    [
     "driver",
-    "board"
+    "mic"
    ]
   ],
   "checks": {
@@ -19,29 +19,29 @@
     "ok": true
    },
    "board": {
-    "clearance": 0.537,
+    "clearance": 0.446,
     "ok": true
    },
    "mic": {
-    "clearance": 0.613,
+    "clearance": 1.513,
     "ok": true
    },
    "cable_boot": {
-    "clearance": 0.507,
+    "clearance": 0.505,
     "ok": true
    }
   },
-  "mass_g": 1.58,
-  "shell_g": 0.78,
+  "mass_g": 1.618,
+  "shell_g": 0.818,
   "com": [
-   -1.93,
-   -0.11,
-   4.0
+   -2.05,
+   -0.15,
+   4.25
   ],
   "cable_exit": [
-   -5.929,
-   7.519,
-   9.726
+   -6.38,
+   7.349,
+   10.693
   ],
   "cable_dir": [
    -0.3215,
