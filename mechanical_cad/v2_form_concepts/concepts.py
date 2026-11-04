@@ -296,7 +296,9 @@ def concept_stem_head_cell():
     s, w = R[:, 1], R[:, 0]
     mag = Cyl("magnet", end + s * GAP, s, MAG[0], MAG[1], MAG[2])
     parts = [drv, bat, *cb, mic, *sp, mag]
-    kw = dict(nozzle_B=B, mic=(mic.c, Z_), pads=(end + s * GAP, s, w))
+    # close_r 5.5 (vs 3.5): fills the notches between head, battery and stem so the body reads as one
+    # smooth form instead of lumps around each part (Paul's review, 2026-10-31)
+    kw = dict(nozzle_B=B, mic=(mic.c, Z_), pads=(end + s * GAP, s, w), close_r=5.5)
     return parts, kw, hours(60, 77), dict(cell="VARTA CP1254 (60-77 mAh)", driver="8 mm")
 
 

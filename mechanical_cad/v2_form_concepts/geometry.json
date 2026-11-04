@@ -3,12 +3,12 @@
   "cell": "VARTA CP1254 (60-77 mAh)",
   "driver": "8 mm",
   "bbox_mm": [
-   19.37,
-   33.04,
-   22.27
+   19.35,
+   32.98,
+   22.13
   ],
   "watertight": true,
-  "faces": 217296,
+  "faces": 217696,
   "min_part_gap": [
    0.3,
    [
@@ -18,48 +18,48 @@
   ],
   "checks": {
    "driver": {
-    "clearance": 0.538,
+    "clearance": 0.536,
     "ok": true
    },
    "battery": {
-    "clearance": 0.576,
+    "clearance": 0.57,
     "ok": true
    },
    "codec_parts": {
-    "clearance": 1.235,
+    "clearance": 1.248,
     "ok": true
    },
    "codec_pcb": {
-    "clearance": 0.52,
+    "clearance": 0.512,
     "ok": true
    },
    "mic": {
-    "clearance": 0.567,
+    "clearance": 0.54,
     "ok": true
    },
    "pmic_parts": {
-    "clearance": 0.465,
+    "clearance": 0.481,
     "ok": true
    },
    "pcb": {
-    "clearance": 0.485,
+    "clearance": 0.502,
     "ok": true
    },
    "module": {
-    "clearance": 0.461,
+    "clearance": 0.482,
     "ok": true
    },
    "magnet": {
-    "clearance": 0.521,
+    "clearance": 0.519,
     "ok": true
    }
   },
-  "mass_g": 5.125,
-  "shell_g": 1.985,
+  "mass_g": 5.121,
+  "shell_g": 1.981,
   "com": [
    -5.21,
-   -4.51,
-   9.05
+   -4.52,
+   9.04
   ],
   "battery_life": {
    "loud_h": [
