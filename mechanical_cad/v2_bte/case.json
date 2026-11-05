@@ -29,7 +29,7 @@
   "watertight": true,
   "volume_cm3": 3.4
  },
- "pod_R_max_intrusion_mm": -0.186,
+ "pod_R_max_intrusion_mm": -0.183,
  "pod_L_max_intrusion_mm": -0.187,
  "outer_mm": [
   48.6,

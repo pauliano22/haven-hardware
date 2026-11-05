@@ -103,7 +103,8 @@ def main():
         t = np.array([xoff[side] - c[0], y_pods - c[1], -m.bounds[0][2] + CLR])
         m.apply_transform(trimesh.transformations.translation_matrix(t))
         placed[side] = m
-    trimesh.util.concatenate(list(placed.values())).export(os.path.join(HERE, "case_preview_pods.stl"))
+    trimesh.util.concatenate([m.simplify_quadric_decimation(face_count=40000) for m in placed.values()]).export(
+        os.path.join(HERE, "case_preview_pods.stl"))                  # preview only
     inner_x = max(2 * w[0] + POD_GAP + 1.0, TRAY[0] + 1.0, 32.0)
     pod_top = max(m.bounds[1][2] for m in placed.values())
     outer = np.array([inner_x + 2 * WALL, inner_y + 2 * WALL])
@@ -180,6 +181,11 @@ def main():
         msh.export(os.path.join(HERE, f"{name}.stl"))
         parts = msh.split(only_watertight=False)
         msh = max(parts, key=lambda q: len(q.faces))                 # drop any stray specks
+        if len(msh.faces) > 150000:                                  # keep the LFS files small
+            full = msh
+            msh = msh.simplify_quadric_decimation(face_count=150000)
+            if not msh.is_watertight:
+                msh = full
         msh.export(os.path.join(HERE, f"{name}.stl"))
         out[name] = dict(n_specks_dropped=len(parts) - 1, bbox_mm=msh.extents.round(2).tolist(), watertight=bool(msh.is_watertight),
                          volume_cm3=round(msh.volume / 1000, 2))
