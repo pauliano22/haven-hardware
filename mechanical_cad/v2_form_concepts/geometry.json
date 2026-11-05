@@ -1,0 +1,239 @@
+{
+ "stem_head_cell": {
+  "cell": "VARTA CP1254 (60-77 mAh)",
+  "driver": "8 mm",
+  "bbox_mm": [
+   19.35,
+   32.98,
+   22.13
+  ],
+  "watertight": true,
+  "faces": 217696,
+  "min_part_gap": [
+   0.3,
+   [
+    "battery",
+    "codec_parts"
+   ]
+  ],
+  "checks": {
+   "driver": {
+    "clearance": 0.536,
+    "ok": true
+   },
+   "battery": {
+    "clearance": 0.57,
+    "ok": true
+   },
+   "codec_parts": {
+    "clearance": 1.248,
+    "ok": true
+   },
+   "codec_pcb": {
+    "clearance": 0.512,
+    "ok": true
+   },
+   "mic": {
+    "clearance": 0.54,
+    "ok": true
+   },
+   "pmic_parts": {
+    "clearance": 0.481,
+    "ok": true
+   },
+   "pcb": {
+    "clearance": 0.502,
+    "ok": true
+   },
+   "module": {
+    "clearance": 0.482,
+    "ok": true
+   },
+   "magnet": {
+    "clearance": 0.519,
+    "ok": true
+   }
+  },
+  "mass_g": 5.121,
+  "shell_g": 1.981,
+  "com": [
+   -5.21,
+   -4.52,
+   9.04
+  ],
+  "battery_life": {
+   "loud_h": [
+    6.4,
+    8.2
+   ],
+   "quiet_h": [
+    13.7,
+    17.6
+   ]
+  }
+ },
+ "bte_inear": {
+  "driver": "8 mm",
+  "note": "receiver-in-canal unit; electronics in the pod",
+  "bbox_mm": [
+   12.46,
+   15.48,
+   15.93
+  ],
+  "watertight": true,
+  "faces": 76756,
+  "min_part_gap": [
+   0.225,
+   [
+    "driver",
+    "cable_boss"
+   ]
+  ],
+  "checks": {
+   "driver": {
+    "clearance": 0.535,
+    "ok": true
+   },
+   "flex": {
+    "clearance": 0.456,
+    "ok": true
+   },
+   "mic": {
+    "clearance": 0.612,
+    "ok": true
+   },
+   "cable_boss": {
+    "clearance": 0.492,
+    "ok": true
+   }
+  },
+  "mass_g": 1.374,
+  "shell_g": 0.674,
+  "com": [
+   -1.72,
+   0.03,
+   3.48
+  ]
+ },
+ "bte_pod": {
+  "cell": "VARTA CP1454 (85-120 mAh)",
+  "bbox_mm": [
+   17.8,
+   33.4,
+   9.2
+  ],
+  "watertight": true,
+  "faces": 154820,
+  "min_part_gap": [
+   0.3,
+   [
+    "pcb",
+    "magnet"
+   ]
+  ],
+  "checks": {
+   "battery": {
+    "clearance": 0.547,
+    "ok": true
+   },
+   "pmic_parts": {
+    "clearance": 0.504,
+    "ok": true
+   },
+   "pcb": {
+    "clearance": 0.541,
+    "ok": true
+   },
+   "module": {
+    "clearance": 0.463,
+    "ok": true
+   },
+   "magnet": {
+    "clearance": 0.527,
+    "ok": true
+   }
+  },
+  "mass_g": 4.765,
+  "shell_g": 1.575,
+  "com": [
+   -0.0,
+   -4.21,
+   -0.02
+  ],
+  "battery_life": {
+   "loud_h": [
+    9.1,
+    12.8
+   ],
+   "quiet_h": [
+    19.4,
+    27.4
+   ]
+  }
+ },
+ "stem_cyl": {
+  "cell": "GP Batteries GP1018L10, cylindrical Li-ion, 100-105 mAh",
+  "driver": "8 mm",
+  "bbox_mm": [
+   19.77,
+   34.64,
+   22.44
+  ],
+  "watertight": true,
+  "faces": 235432,
+  "min_part_gap": [
+   0.3,
+   [
+    "battery",
+    "magnet"
+   ]
+  ],
+  "checks": {
+   "driver": {
+    "clearance": 0.538,
+    "ok": true
+   },
+   "bottom_parts": {
+    "clearance": 0.491,
+    "ok": true
+   },
+   "pcb": {
+    "clearance": 0.498,
+    "ok": true
+   },
+   "module": {
+    "clearance": 0.428,
+    "ok": true
+   },
+   "mic": {
+    "clearance": 0.875,
+    "ok": true
+   },
+   "battery": {
+    "clearance": 0.57,
+    "ok": true
+   },
+   "magnet": {
+    "clearance": 0.627,
+    "ok": true
+   }
+  },
+  "mass_g": 6.919,
+  "shell_g": 2.109,
+  "com": [
+   -1.35,
+   -11.89,
+   7.64
+  ],
+  "battery_life": {
+   "loud_h": [
+    10.7,
+    11.2
+   ],
+   "quiet_h": [
+    22.9,
+    24.0
+   ]
+  }
+ }
+}

@@ -1,0 +1,110 @@
+[
+ {
+  "subject": 48,
+  "pose": {
+   "roll": 52,
+   "tilt_a": 15,
+   "tilt_s": -15,
+   "insert": -0.75
+  },
+  "max_pen": 4.38,
+  "pen_area_mm2": 504.1,
+  "contact_mm2": 644.3,
+  "height_above_E": 19.4,
+  "tragus_above_E": 11.6,
+  "protrusion": 7.8,
+  "lowest_below_E": 22.8,
+  "com_axis_offset": 6.74,
+  "moment_Nmm": 0.869
+ },
+ {
+  "subject": 81,
+  "pose": {
+   "roll": -67,
+   "tilt_a": -5,
+   "tilt_s": -15,
+   "insert": -0.75
+  },
+  "max_pen": 4.11,
+  "pen_area_mm2": 347.5,
+  "contact_mm2": 454.9,
+  "height_above_E": 29.0,
+  "tragus_above_E": 10.5,
+  "protrusion": 18.5,
+  "lowest_below_E": 8.9,
+  "com_axis_offset": 10.01,
+  "moment_Nmm": 1.0
+ },
+ {
+  "subject": 30,
+  "pose": {
+   "roll": -67,
+   "tilt_a": 15,
+   "tilt_s": -15,
+   "insert": -0.75
+  },
+  "max_pen": 4.18,
+  "pen_area_mm2": 517.5,
+  "contact_mm2": 522.0,
+  "height_above_E": 24.0,
+  "tragus_above_E": 13.4,
+  "protrusion": 10.7,
+  "lowest_below_E": 9.1,
+  "com_axis_offset": 12.68,
+  "moment_Nmm": 0.985
+ },
+ {
+  "subject": 3,
+  "pose": {
+   "roll": -67,
+   "tilt_a": 15,
+   "tilt_s": -15,
+   "insert": -0.75
+  },
+  "max_pen": 3.5,
+  "pen_area_mm2": 378.8,
+  "contact_mm2": 456.4,
+  "height_above_E": 24.0,
+  "tragus_above_E": 13.2,
+  "protrusion": 10.9,
+  "lowest_below_E": 9.1,
+  "com_axis_offset": 12.68,
+  "moment_Nmm": 0.985
+ },
+ {
+  "subject": 12,
+  "pose": {
+   "roll": 52,
+   "tilt_a": 15,
+   "tilt_s": -15,
+   "insert": -0.75
+  },
+  "max_pen": 4.14,
+  "pen_area_mm2": 437.0,
+  "contact_mm2": 435.5,
+  "height_above_E": 19.4,
+  "tragus_above_E": 17.0,
+  "protrusion": 2.4,
+  "lowest_below_E": 22.8,
+  "com_axis_offset": 6.74,
+  "moment_Nmm": 0.869
+ },
+ {
+  "subject": 57,
+  "pose": {
+   "roll": 15,
+   "tilt_a": -5,
+   "tilt_s": -15,
+   "insert": -0.75
+  },
+  "max_pen": 4.07,
+  "pen_area_mm2": 602.5,
+  "contact_mm2": 647.3,
+  "height_above_E": 20.9,
+  "tragus_above_E": 12.9,
+  "protrusion": 8.0,
+  "lowest_below_E": 27.2,
+  "com_axis_offset": 8.36,
+  "moment_Nmm": 0.73
+ }
+]
