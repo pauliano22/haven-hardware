@@ -187,11 +187,14 @@ def main():
         msh.export(os.path.join(HERE, f"{name}.stl"))
         parts = msh.split(only_watertight=False)
         msh = max(parts, key=lambda q: len(q.faces))                 # drop any stray specks
-        if len(msh.faces) > 150000:                                  # keep the LFS files small
-            full = msh
-            msh = msh.simplify_quadric_decimation(face_count=150000)
-            if not msh.is_watertight:
-                msh = full
+        for n in (150000, 200000, 250000, 300000):                   # keep the LFS files small
+            if len(msh.faces) <= n:
+                break
+            d = msh.simplify_quadric_decimation(face_count=n)
+            d.merge_vertices(); trimesh.repair.fill_holes(d); d.remove_unreferenced_vertices()
+            if d.is_watertight:                                      # first watertight decimation wins
+                msh = d
+                break
         msh.export(os.path.join(HERE, f"{name}.stl"))
         out[name] = dict(n_specks_dropped=len(parts) - 1, bbox_mm=msh.extents.round(2).tolist(), watertight=bool(msh.is_watertight),
                          volume_cm3=round(msh.volume / 1000, 2))
