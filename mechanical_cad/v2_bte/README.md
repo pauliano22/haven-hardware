@@ -89,7 +89,7 @@ doi:10.14279/depositonce-8487.
 `case.py` → `case_base.stl`, `case_lid.stl`, `case_plate.stl`, `board_case_outline.dxf`, `case.json`;
 `render_case.py` → `preview_case.png`. Schematic: haven-dev-board-kicad `kicad_v2_case/`.
 
-- **48.6 × 50.6 × 49.1 mm** closed. Base, lid (friction fit over a 3 mm lip, 0.15 mm per side) and
+- **48.6 × 50.6 × 49.9 mm** closed. Base, lid (friction fit over a 3 mm lip, 0.15 mm per side) and
   a 1.4 mm bottom plate. All three meshes are watertight.
 - **Pod wells:** each pod stands upright, and its well is the pod's own lower envelope dropped
   straight down plus 0.35 mm, 14 mm deep. The pod rests on its lowest point, which is its charge
@@ -107,7 +107,9 @@ doi:10.14279/depositonce-8487.
   a 44 × 15.5 mm strip at the back, under the pods. USB-C sits on its back edge, at x = −2 mm in the
   back-wall opening; the charge LED shines through a Ø1.5 mm hole in the back wall. The 603040 LiPo
   (6 × 30 × 40 mm) lies sideways in front of it.
-- **Spring pins:** the board's top face is 9.3 mm below the pod contacts (with flush contacts), so
-  use SMD pogo pins about **9.8 mm tall with ≥ 1 mm travel**, plunger ≤ Ø1.2 mm.
+- **Spring pins:** candidate Kinghelm KH-PG2011005-DZ (LCSC C2842935): SMD, 11 mm free length, 2 mm
+  base. The board's top sits `POGO_WORK_H` = 10.0 mm below the (flush) pod contacts, i.e. ~1 mm of
+  compression. Its stroke isn't published on LCSC: measure a real pin, set `POGO_WORK_H` in
+  `case.py` and rerun it (the bay height follows).
 - Not done: the lid has no magnets or hinge yet (friction fit only), there are no cable-loop
   guides. The case board is laid out (haven-dev-board-kicad `kicad_v2_case/`).

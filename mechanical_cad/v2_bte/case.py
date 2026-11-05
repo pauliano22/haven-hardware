@@ -27,8 +27,14 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 VOX = 0.2
 CLR = 0.35            # pod-to-well clearance
 WALL = 1.8
+# Spring pin working height (board top -> pod contact, pin partly compressed). Candidate pin:
+# Kinghelm KH-PG2011005-DZ (LCSC C2842935), SMD, 11 mm free, 2 mm base; its stroke isn't
+# published on LCSC, so 10.0 assumes ~1 mm of compression. Measure the real pin and change this.
+POGO_WORK_H = 10.0
+CONTACT_Z = 0.35 + 0.3  # pod contact face above the floor top: CLR + contact column height over the pod's lowest point
+BOARD_T = 1.0
 FLOOR = 1.6           # floor between the wells and the electronics bay
-BAY_H = 8.0           # board 0.8 + pogo body + battery 6.0 + slack
+BAY_H = POGO_WORK_H - CONTACT_Z + BOARD_T - FLOOR   # board lies on the plate; its top is POGO_WORK_H below the contacts
 PLATE = 1.4
 WELL_DEPTH = 14.0     # how far up the pod the well grips
 POD_GAP = 3.0         # wall between the two wells
@@ -160,10 +166,10 @@ def main():
             pins.append(contacts[side][k])
         base = np.maximum(base, -cyl_z(G, mc, POD_MAG[0] / 2 + 0.1, -FLOOR - 1, -FLOOR + POD_MAG[1] + 0.1))
     # USB-C opening in the back wall, at bay height
-    usb_z = z_bot + PLATE + 1.0 + 1.6           # board (1.0 mm) on the plate; receptacle centre 1.6 above its top
+    usb_z = z_bot + PLATE + BOARD_T + 1.6       # board on the plate; receptacle centre 1.6 above its top
     base = np.maximum(base, -rbox(G, [USB_X, outer[1] / 2, usb_z], [USB_C[0], 2 * WALL + 2, USB_C[1]], 1.2))
     # light hole for the charge LED (0603 on the board top, at the back edge)
-    led_z = z_bot + PLATE + 1.0 + 0.3
+    led_z = z_bot + PLATE + BOARD_T + 0.3
     d = np.hypot(G[..., 0] - LED_X, G[..., 2] - led_z) - LED_HOLE / 2
     base = np.maximum(base, -np.maximum(d, np.abs(G[..., 1] - outer[1] / 2) - (WALL + 1.0)))
     # ---- lid: cap from base_top - LIP up to lid_top
@@ -233,7 +239,7 @@ def main():
 
     out.update(outer_mm=[round(float(outer[0]), 1), round(float(outer[1]), 1), round(float(lid_top - z_bot), 1)],
                board_mm=[round(bw, 1), bl], board_center_y=round(by, 2), floor_top_z=0.0, bay=[inner_x, inner_y, BAY_H],
-               contacts=contacts, usb_c_center=[USB_X, round(usb_z, 2)], led_hole=[LED_X, round(led_z, 2)], board_top_z=round(z_bot + PLATE + 1.0, 2),
+               contacts=contacts, usb_c_center=[USB_X, round(usb_z, 2)], led_hole=[LED_X, round(led_z, 2)], board_top_z=round(z_bot + PLATE + BOARD_T, 2), pogo_work_h=POGO_WORK_H,
                pod_top_z=round(float(pod_top), 2), base_top_z=base_top,
                tray_center_y=round(float(ty), 2), tray_floor_z=round(base_top - TRAY[2], 2), lid_inner_top_z=round(lid_top - LID_T, 2))
     json.dump(out, open(os.path.join(HERE, "case.json"), "w"), indent=1)
