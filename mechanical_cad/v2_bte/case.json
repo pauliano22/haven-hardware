@@ -1,0 +1,86 @@
+{
+ "case_base": {
+  "n_specks_dropped": 0,
+  "bbox_mm": [
+   48.6,
+   49.13,
+   25.39
+  ],
+  "watertight": true,
+  "volume_cm3": 25.25
+ },
+ "case_lid": {
+  "n_specks_dropped": 4,
+  "bbox_mm": [
+   48.6,
+   49.13,
+   24.96
+  ],
+  "watertight": true,
+  "volume_cm3": 10.29
+ },
+ "case_plate": {
+  "n_specks_dropped": 0,
+  "bbox_mm": [
+   48.59,
+   49.12,
+   1.4
+  ],
+  "watertight": true,
+  "volume_cm3": 3.3
+ },
+ "pod_R_max_intrusion_mm": -0.191,
+ "pod_L_max_intrusion_mm": -0.16,
+ "outer_mm": [
+  48.6,
+  49.1,
+  49.1
+ ],
+ "board_mm": [
+  44.0,
+  14.0
+ ],
+ "board_center_y": 15.26,
+ "floor_top_z": 0.0,
+ "bay": [
+  45.0,
+  45.527259826660156,
+  8.0
+ ],
+ "contacts": {
+  "R": {
+   "magnet": [
+    4.796,
+    11.636
+   ],
+   "vbus": [
+    4.796,
+    9.136
+   ],
+   "gnd": [
+    4.796,
+    14.136
+   ]
+  },
+  "L": {
+   "magnet": [
+    -9.6,
+    13.364
+   ],
+   "vbus": [
+    -9.6,
+    15.864
+   ],
+   "gnd": [
+    -9.6,
+    10.864
+   ]
+  }
+ },
+ "usb_c_center_z": -6.9,
+ "pod_top_z": 33.55,
+ "base_top_z": 16.0,
+ "tray_center_y": -10.76,
+ "tray_floor_z": 4.0,
+ "lid_inner_top_z": 36.55
+}

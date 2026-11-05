@@ -83,3 +83,28 @@ Use plain `python3`, not `python3 -I`. trimesh is in the user site-packages.
 
 Ear/head scans: HUTUBS HRTF database, TU Berlin (Brinkmann et al. 2019), CC BY 4.0,
 doi:10.14279/depositonce-8487.
+
+## Charging case (2026-11-05)
+
+`case.py` → `case_base.stl`, `case_lid.stl`, `case_plate.stl`, `board_case_outline.dxf`, `case.json`;
+`render_case.py` → `preview_case.png`. Schematic: haven-dev-board-kicad `kicad_v2_case/`.
+
+- **48.6 × 49.1 × 49.1 mm** closed. Base, lid (friction fit over a 3 mm lip, 0.15 mm per side) and
+  a 1.4 mm bottom plate. All three meshes are watertight.
+- **Pod wells:** each pod stands upright, and its well is the pod's own lower envelope dropped
+  straight down plus 0.35 mm, 14 mm deep. The pod rests on its lowest point, which is its charge
+  end. Pods vs base: no intrusion (closest 0.16–0.19 mm).
+- **Contacts:** two Ø1.6 mm spring-pin holes per pod through the floor, **5.0 mm apart** around a
+  3 × 2 mm magnet pocket under the floor (it pulls on the pod's own magnet). Positions are in
+  `case.json` → `contacts` and on the DXF's POGO layer.
+  **Pod contact pins should be lengthened to 3.5 mm (Ø1.5 brass) so they sit flush with the pod
+  shell.** As modelled they are 1.2 mm, recessed 2.3 mm inside the shell, which a short spring
+  pin can't reach.
+- **In-ear pocket** at the front, 44 × 24 × 12 mm: both in-ear units stand nozzle-up with tips on
+  and clear the base by ~0.3 mm (checked with signed distance, not shown in the render). Their
+  tops are at 22.6 mm; the lid's inside is at 36.6 mm, which leaves room for the cable loops.
+- **Electronics bay** under the floor, 8 mm tall: the case board is a 44 × 14 mm strip at the back,
+  under the pods, with spring pins on its top face and USB-C on its back edge (opening in the
+  back wall). The 603040 LiPo (6 × 30 × 40 mm) lies sideways in front of it.
+- Not done: the lid has no magnets or hinge yet (friction fit only), there are no cable-loop
+  guides, and the case board isn't laid out.
