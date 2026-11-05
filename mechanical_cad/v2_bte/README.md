@@ -89,7 +89,7 @@ doi:10.14279/depositonce-8487.
 `case.py` → `case_base.stl`, `case_lid.stl`, `case_plate.stl`, `board_case_outline.dxf`, `case.json`;
 `render_case.py` → `preview_case.png`. Schematic: haven-dev-board-kicad `kicad_v2_case/`.
 
-- **48.6 × 49.1 × 49.1 mm** closed. Base, lid (friction fit over a 3 mm lip, 0.15 mm per side) and
+- **48.6 × 50.6 × 49.1 mm** closed. Base, lid (friction fit over a 3 mm lip, 0.15 mm per side) and
   a 1.4 mm bottom plate. All three meshes are watertight.
 - **Pod wells:** each pod stands upright, and its well is the pod's own lower envelope dropped
   straight down plus 0.35 mm, 14 mm deep. The pod rests on its lowest point, which is its charge
@@ -100,11 +100,14 @@ doi:10.14279/depositonce-8487.
   **Pod contact pins should be lengthened to 3.5 mm (Ø1.5 brass) so they sit flush with the pod
   shell.** As modelled they are 1.2 mm, recessed 2.3 mm inside the shell, which a short spring
   pin can't reach.
-- **In-ear pocket** at the front, 44 × 24 × 12 mm: both in-ear units stand nozzle-up with tips on
+- **In-ear pocket** at the front, 44 × 25.5 × 12 mm: both in-ear units stand nozzle-up with tips on
   and clear the base by ~0.3 mm (checked with signed distance, not shown in the render). Their
   tops are at 22.6 mm; the lid's inside is at 36.6 mm, which leaves room for the cable loops.
-- **Electronics bay** under the floor, 8 mm tall: the case board is a 44 × 14 mm strip at the back,
-  under the pods, with spring pins on its top face and USB-C on its back edge (opening in the
-  back wall). The 603040 LiPo (6 × 30 × 40 mm) lies sideways in front of it.
+- **Electronics bay** under the floor, 8 mm tall: the case board (1.0 mm) lies on the bottom plate as
+  a 44 × 15.5 mm strip at the back, under the pods. USB-C sits on its back edge, at x = −2 mm in the
+  back-wall opening; the charge LED shines through a Ø1.5 mm hole in the back wall. The 603040 LiPo
+  (6 × 30 × 40 mm) lies sideways in front of it.
+- **Spring pins:** the board's top face is 9.3 mm below the pod contacts (with flush contacts), so
+  use SMD pogo pins about **9.8 mm tall with ≥ 1 mm travel**, plunger ≤ Ø1.2 mm.
 - Not done: the lid has no magnets or hinge yet (friction fit only), there are no cable-loop
-  guides, and the case board isn't laid out.
+  guides. The case board is laid out (haven-dev-board-kicad `kicad_v2_case/`).

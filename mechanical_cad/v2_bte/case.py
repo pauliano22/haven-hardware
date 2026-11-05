@@ -32,7 +32,7 @@ BAY_H = 8.0           # board 0.8 + pogo body + battery 6.0 + slack
 PLATE = 1.4
 WELL_DEPTH = 14.0     # how far up the pod the well grips
 POD_GAP = 3.0         # wall between the two wells
-TRAY = (44.0, 24.0, 12.0)   # in-ear pocket: across, front-back, depth
+TRAY = (44.0, 25.5, 12.0)   # in-ear pocket: across, front-back, depth
 LID_CLEAR = 3.0       # above the pod tops
 LIP = 3.0             # height of the lid's overlap on the base
 LID_T = 1.6
@@ -41,6 +41,9 @@ POD_MAG = (3.0, 2.0)  # matches the pod's magnet
 POGO_PITCH = 5.0
 POGO_HOLE = 1.6
 USB_C = (9.2, 3.4)    # receptacle opening, w x h
+USB_X = -2.0          # matches J1 on the case board (gen_v2_case_pcb.py)
+LED_X = -8.8          # charge LED D2 at the board's back edge
+LED_HOLE = 1.5
 
 
 def pod_in_case(mirror):
@@ -156,8 +159,12 @@ def main():
             pins.append(contacts[side][k])
         base = np.maximum(base, -cyl_z(G, mc, POD_MAG[0] / 2 + 0.1, -FLOOR - 1, -FLOOR + POD_MAG[1] + 0.1))
     # USB-C opening in the back wall, at bay height
-    usb_z = -FLOOR - BAY_H + 0.8 + USB_C[1] / 2 + 0.2
-    base = np.maximum(base, -rbox(G, [0, outer[1] / 2, usb_z], [USB_C[0], 2 * WALL + 2, USB_C[1]], 1.2))
+    usb_z = z_bot + PLATE + 1.0 + 1.6           # board (1.0 mm) on the plate; receptacle centre 1.6 above its top
+    base = np.maximum(base, -rbox(G, [USB_X, outer[1] / 2, usb_z], [USB_C[0], 2 * WALL + 2, USB_C[1]], 1.2))
+    # light hole for the charge LED (0603 on the board top, at the back edge)
+    led_z = z_bot + PLATE + 1.0 + 0.3
+    d = np.hypot(G[..., 0] - LED_X, G[..., 2] - led_z) - LED_HOLE / 2
+    base = np.maximum(base, -np.maximum(d, np.abs(G[..., 1] - outer[1] / 2) - (WALL + 1.0)))
     # ---- lid: cap from base_top - LIP up to lid_top
     lid_h = lid_top - (base_top - LIP)
     lid = rbox(G, [0, 0, base_top - LIP + lid_h / 2], [outer[0], outer[1], lid_h], 3.0)
@@ -190,7 +197,7 @@ def main():
     for n in ("Edge.Cuts", "POGO", "POD_MAGNET", "USB_C", "BATTERY", "NOTES"):
         doc.layers.add(n)
     msp = doc.modelspace()
-    bw, bl = inner_x - 1.0, 14.0                                   # strip under the pods, back of the bay
+    bw, bl = inner_x - 1.0, 15.5                                   # strip under the pods, back of the bay
     by = inner_y / 2 - bl / 2 - 0.5
     pts = [(-bw / 2, by - bl / 2), (bw / 2, by - bl / 2), (bw / 2, by + bl / 2), (-bw / 2, by + bl / 2), (-bw / 2, by - bl / 2)]
     msp.add_lwpolyline(pts, dxfattribs=dict(layer="Edge.Cuts"))
@@ -205,6 +212,10 @@ def main():
     # 603040 cell turned sideways: 40 mm across, 30 mm front-back, in front of the board strip
     b0 = -inner_y / 2 + 0.3
     assert b0 + 30.0 <= by - bl / 2 - 0.3, "battery does not fit in front of the board"
+    for side in ("L", "R"):                                   # every spring pin >= 2 mm inside the board
+        for k in ("vbus", "gnd"):
+            yk = contacts[side][k][1]
+            assert by - bl / 2 + 2.0 <= yk <= by + bl / 2 - 2.0, (side, k, yk)
     msp.add_lwpolyline([(-20, b0), (20, b0), (20, b0 + 30), (-20, b0 + 30), (-20, b0)], dxfattribs=dict(layer="BATTERY"))
     notes = ["Haven v2 case board, case frame (X across, Y back = +), board under the floor at the back of the bay.",
              "Spring pins on the TOP face at POGO circles, pointing up through the floor; pod magnets sit in the floor",
@@ -216,7 +227,7 @@ def main():
 
     out.update(outer_mm=[round(float(outer[0]), 1), round(float(outer[1]), 1), round(float(lid_top - z_bot), 1)],
                board_mm=[round(bw, 1), bl], board_center_y=round(by, 2), floor_top_z=0.0, bay=[inner_x, inner_y, BAY_H],
-               contacts=contacts, usb_c_center_z=round(usb_z, 2),
+               contacts=contacts, usb_c_center=[USB_X, round(usb_z, 2)], led_hole=[LED_X, round(led_z, 2)], board_top_z=round(z_bot + PLATE + 1.0, 2),
                pod_top_z=round(float(pod_top), 2), base_top_z=base_top,
                tray_center_y=round(float(ty), 2), tray_floor_z=round(base_top - TRAY[2], 2), lid_inner_top_z=round(lid_top - LID_T, 2))
     json.dump(out, open(os.path.join(HERE, "case.json"), "w"), indent=1)
