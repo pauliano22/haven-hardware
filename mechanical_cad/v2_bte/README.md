@@ -130,3 +130,38 @@ Scored as if rigid, both make the press **worse** on all six scanned ears (mean 
 dataset, where the bare body would sit loose, and to put silicone rather than resin on the skin.
 Real silicone gives under load, so the rigid score overstates them. Print M/L in flexible resin
 for the real-ear test; the seal is still the standard S/M/L ear tip.
+
+**Speaker size** (2026-11-06): `HAVEN_DRIVER=8.0x3.9 HAVEN_OUT=<dir> python3 bte.py` rebuilds for
+another driver (BODY_UP clamps to driver radius − 1.5). An 8 × 3.9 mm driver fits better: mean worst
+1.53 mm / area 31 mm² vs 1.76 / 46 for the 9 mm (pp48 2.7/114, pp81 1.8/39, pp30 1.1/3, pp3 0.9/0,
+pp12 0.9/0, pp57 1.8/28). Plan: generic 8 mm TWS drivers first, OWR-0860T-16 as backup.
+
+## Charging case (2026-11-05)
+
+`case.py` → `case_base.stl`, `case_lid.stl`, `case_plate.stl`, `board_case_outline.dxf`, `case.json`;
+`render_case.py` → `preview_case.png`. Schematic: haven-dev-board-kicad `kicad_v2_case/`.
+
+- **48.6 × 50.6 × 49.9 mm** closed. Base, lid (friction fit over a 3 mm lip, 0.15 mm per side) and
+  a 1.4 mm bottom plate. All three meshes are watertight.
+- **Pod wells:** each pod stands upright, and its well is the pod's own lower envelope dropped
+  straight down plus 0.35 mm, 14 mm deep. The pod rests on its lowest point, which is its charge
+  end. Pods vs base: no intrusion (closest 0.16–0.19 mm).
+- **Contacts:** two Ø1.6 mm spring-pin holes per pod through the floor, **5.0 mm apart** around a
+  3 × 2 mm magnet pocket under the floor (it pulls on the pod's own magnet). Positions are in
+  `case.json` → `contacts` and on the DXF's POGO layer.
+  **Pod contact pins should be lengthened to 3.5 mm (Ø1.5 brass) so they sit flush with the pod
+  shell.** As modelled they are 1.2 mm, recessed 2.3 mm inside the shell, which a short spring
+  pin can't reach.
+- **In-ear pocket** at the front, 44 × 25.5 × 12 mm: both in-ear units stand nozzle-up with tips on
+  and clear the base by ~0.3 mm (checked with signed distance, not shown in the render). Their
+  tops are at 22.6 mm; the lid's inside is at 36.6 mm, which leaves room for the cable loops.
+- **Electronics bay** under the floor, 8 mm tall: the case board (1.0 mm) lies on the bottom plate as
+  a 44 × 15.5 mm strip at the back, under the pods. USB-C sits on its back edge, at x = −2 mm in the
+  back-wall opening; the charge LED shines through a Ø1.5 mm hole in the back wall. The 603040 LiPo
+  (6 × 30 × 40 mm) lies sideways in front of it.
+- **Spring pins:** candidate Kinghelm KH-PG2011005-DZ (LCSC C2842935): SMD, 11 mm free length, 2 mm
+  base. The board's top sits `POGO_WORK_H` = 10.0 mm below the (flush) pod contacts, i.e. ~1 mm of
+  compression. Its stroke isn't published on LCSC: measure a real pin, set `POGO_WORK_H` in
+  `case.py` and rerun it (the bay height follows).
+- Not done: the lid has no magnets or hinge yet (friction fit only), there are no cable-loop
+  guides. The case board is laid out (haven-dev-board-kicad `kicad_v2_case/`).
