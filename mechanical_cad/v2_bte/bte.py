@@ -146,8 +146,9 @@ def shell_with_hole(parts, kw, hole_base, hole_dir, hole_len=14.0, hole_d=CABLE_
 
 def mirror_x(mesh):
     m = mesh.copy()
-    m.apply_transform(np.diag([-1.0, 1, 1, 1]))
-    m.invert()
+    m.apply_transform(np.diag([-1.0, 1, 1, 1]))   # trimesh already re-winds faces on a mirror
+    if m.volume < 0:
+        m.invert()
     return m
 
 
