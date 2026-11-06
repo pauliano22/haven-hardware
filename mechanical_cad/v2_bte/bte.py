@@ -36,10 +36,30 @@ GAP = cc.GAP
 CABLE_HOLE_D = 1.7                            # 1.5 mm OD harness + 0.2 mm
 # Ole Wolff OWR-0860T-16: datasheet size 9.0 x 4.5 mm (dia x H), 16 ohm (mass estimated)
 DRV = (9.0, 4.5, 0.6)
+# Swap the speaker without editing code: HAVEN_DRIVER="8.0x3.9" (dia x H, mm) or "8.0x3.9x0.5" (+ mass g).
+if os.environ.get("HAVEN_DRIVER"):
+    _d = [float(v) for v in os.environ["HAVEN_DRIVER"].lower().split("x")]
+    DRV = (_d[0], _d[1], _d[2] if len(_d) > 2 else DRV[2])
+OUT_DIR = os.environ.get("HAVEN_OUT", HERE)   # trial builds go elsewhere so the committed files stay put
 
 # ---------------------------------------------------------------- in-ear unit
 INEAR_BOARD = (6.0, 6.0, 0.6)
 CABLE_DIR = unit([-0.35, 1.0, 0.25])          # up and back toward the helix root
+
+
+# Body offset (2026-11-05 sweep on the six HUTUBS ears): the whole body (driver, board, mic, boot)
+# moves BODY_UP mm superior (perpendicular to the canal axis) and BODY_OUT mm out of the canal, and
+# the nozzle grows by BODY_OUT so the ear tip sits at the same depth. Centred on the canal, the
+# 9 mm driver's housing hung into the intertragic notch: mean worst compression 3.17 mm / 159 mm2;
+# with up 3 + out 3 it is 2.03 mm / 63 mm2 (back 2, up2+back1.5, up2+fwd1.5 were all worse).
+# 3 mm is the most the bore (r 1.5) can move off the driver (r 4.5) and still face it.
+BODY_UP, BODY_OUT = min(3.0, DRV[0] / 2 - 1.5), 3.0   # bore (r 1.5) must still face the driver
+NOZZLE_LEN_V2 = cc.nz.NOZZLE_LEN + BODY_OUT      # 8.5 mm
+
+
+def body_shift():
+    up = Y_ - (Y_ @ cc.N_IN) * cc.N_IN
+    return unit(up) * BODY_UP + cc.OUT * BODY_OUT
 
 
 # Variant A (primary): speaker + mic on a 6 x 6 mm board, 6-wire ~1.5 mm OD cable.
@@ -67,6 +87,15 @@ def inear_parts(variant="A"):
         parts = [drv, boot]
         kw = dict(nozzle_B=cc.B, mic=None, pads=None)
         blen = 4.0
+    D = body_shift()
+    for p in parts:
+        for k in ("c", "base"):
+            if isinstance(getattr(p, k, None), np.ndarray):
+                setattr(p, k, getattr(p, k) + D)
+    boot_base = boot_base + D
+    kw["nozzle_B"] = cc.B + cc.OUT * BODY_OUT       # nozzle base moves out with the body; the nozzle is longer
+    if kw.get("mic") is not None:
+        kw["mic"] = (kw["mic"][0] + D, kw["mic"][1])
     exit_pt = boot_base + CABLE_DIR * (blen + cc.CLR + cc.WALL)
     return parts, kw, dict(cable_exit=exit_pt, cable_dir=CABLE_DIR, cable_base=boot_base)
 
@@ -122,8 +151,9 @@ def shell_with_hole(parts, kw, hole_base, hole_dir, hole_len=14.0, hole_d=CABLE_
 
 def mirror_x(mesh):
     m = mesh.copy()
-    m.apply_transform(np.diag([-1.0, 1, 1, 1]))
-    m.invert()
+    m.apply_transform(np.diag([-1.0, 1, 1, 1]))   # trimesh already re-winds faces on a mirror
+    if m.volume < 0:
+        m.invert()
     return m
 
 
@@ -209,15 +239,19 @@ def report(tag, mesh, fd, parts, tip):
 
 def main():
     geo = {}
+    os.makedirs(OUT_DIR, exist_ok=True)
+    nz_len0 = cc.nz.NOZZLE_LEN
+    cc.nz.NOZZLE_LEN = NOZZLE_LEN_V2                  # build_shell and nozzle_sdf read it at call time
     for v in ("A", "B"):
         parts, kw, info = inear_parts(v)
         mesh, fd = shell_with_hole(parts, kw, info["cable_base"], info["cable_dir"], hole_d=CABLE_HOLE[v])
         geo[f"inear_{v}"] = dict(report(f"inear_{v}", mesh, fd, parts, True), cable_exit=info["cable_exit"].round(3).tolist(),
                                  cable_dir=info["cable_dir"].round(4).tolist(), cable_hole_d=CABLE_HOLE[v])
-        mesh.export(os.path.join(HERE, f"bte_inear_{v}_R.stl")); mirror_x(mesh).export(os.path.join(HERE, f"bte_inear_{v}_L.stl"))
-        gen.mesh_to_step(mesh, os.path.join(HERE, f"bte_inear_{v}_R.step")); gen.mesh_to_step(mirror_x(mesh), os.path.join(HERE, f"bte_inear_{v}_L.step"))
-        export_parts(parts, fd, os.path.join(HERE, f"parts_inear_{v}"))
-    inear_dxf(os.path.join(HERE, "board_inear_outline.dxf"))
+        mesh.export(os.path.join(OUT_DIR, f"bte_inear_{v}_R.stl")); mirror_x(mesh).export(os.path.join(OUT_DIR, f"bte_inear_{v}_L.stl"))
+        gen.mesh_to_step(mesh, os.path.join(OUT_DIR, f"bte_inear_{v}_R.step")); gen.mesh_to_step(mirror_x(mesh), os.path.join(OUT_DIR, f"bte_inear_{v}_L.step"))
+        export_parts(parts, fd, os.path.join(OUT_DIR, f"parts_inear_{v}"))
+    inear_dxf(os.path.join(OUT_DIR, "board_inear_outline.dxf"))
+    cc.nz.NOZZLE_LEN = nz_len0
 
     parts, kw, info = pod_parts()
     base = CABLE_IN
@@ -226,11 +260,11 @@ def main():
     geo["pod"] = dict(report("pod", mesh, fd, parts, False), cable_entry=info["cable_entry"].round(3).tolist(),
                       cable_dir=CABLE_IN_DIR.round(4).tolist(), board_mm=list(POD_BOARD),
                       battery_life=cc.hours(85, 120), pod_mic_xy=list(POD_MIC_XY), module_x=MOD_X)
-    mesh.export(os.path.join(HERE, "bte_pod_R.stl")); mirror_x(mesh).export(os.path.join(HERE, "bte_pod_L.stl"))
-    gen.mesh_to_step(mesh, os.path.join(HERE, "bte_pod_R.step")); gen.mesh_to_step(mirror_x(mesh), os.path.join(HERE, "bte_pod_L.step"))
-    export_parts(parts, fd, os.path.join(HERE, "parts_pod"))
-    pod_dxf(os.path.join(HERE, "board_pod_outline.dxf"), info["bat_center_y"])
-    json.dump(geo, open(os.path.join(HERE, "geometry.json"), "w"), indent=1)
+    mesh.export(os.path.join(OUT_DIR, "bte_pod_R.stl")); mirror_x(mesh).export(os.path.join(OUT_DIR, "bte_pod_L.stl"))
+    gen.mesh_to_step(mesh, os.path.join(OUT_DIR, "bte_pod_R.step")); gen.mesh_to_step(mirror_x(mesh), os.path.join(OUT_DIR, "bte_pod_L.step"))
+    export_parts(parts, fd, os.path.join(OUT_DIR, "parts_pod"))
+    pod_dxf(os.path.join(OUT_DIR, "board_pod_outline.dxf"), info["bat_center_y"])
+    json.dump(geo, open(os.path.join(OUT_DIR, "geometry.json"), "w"), indent=1)
 
 
 if __name__ == "__main__":

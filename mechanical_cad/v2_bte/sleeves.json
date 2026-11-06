@@ -1,0 +1,90 @@
+{
+ "M": {
+  "thickness_mm": 0.8,
+  "watertight": true,
+  "volume_mm3": 261.0,
+  "mass_g_silicone": 0.287,
+  "bbox_mm": [
+   15.24,
+   16.31,
+   12.26
+  ],
+  "dropped_pieces": 14,
+  "fit": {
+   "48": {
+    "max_press_mm": 3.99,
+    "area_over_1mm_mm2": 206.4,
+    "contact_mm2": 310.3
+   },
+   "81": {
+    "max_press_mm": 3.21,
+    "area_over_1mm_mm2": 92.3,
+    "contact_mm2": 310.3
+   },
+   "30": {
+    "max_press_mm": 2.09,
+    "area_over_1mm_mm2": 81.3,
+    "contact_mm2": 239.3
+   },
+   "3": {
+    "max_press_mm": 1.62,
+    "area_over_1mm_mm2": 24.6,
+    "contact_mm2": 157.2
+   },
+   "12": {
+    "max_press_mm": 1.65,
+    "area_over_1mm_mm2": 36.2,
+    "contact_mm2": 240.6
+   },
+   "57": {
+    "max_press_mm": 2.76,
+    "area_over_1mm_mm2": 121.7,
+    "contact_mm2": 418.4
+   }
+  }
+ },
+ "L": {
+  "thickness_mm": 1.5,
+  "watertight": true,
+  "volume_mm3": 559.1,
+  "mass_g_silicone": 0.615,
+  "bbox_mm": [
+   16.59,
+   18.08,
+   13.28
+  ],
+  "dropped_pieces": 495,
+  "fit": {
+   "48": {
+    "max_press_mm": 4.38,
+    "area_over_1mm_mm2": 276.7,
+    "contact_mm2": 357.7
+   },
+   "81": {
+    "max_press_mm": 3.82,
+    "area_over_1mm_mm2": 123.8,
+    "contact_mm2": 353.9
+   },
+   "30": {
+    "max_press_mm": 3.1,
+    "area_over_1mm_mm2": 145.2,
+    "contact_mm2": 292.0
+   },
+   "3": {
+    "max_press_mm": 2.44,
+    "area_over_1mm_mm2": 73.4,
+    "contact_mm2": 228.5
+   },
+   "12": {
+    "max_press_mm": 2.23,
+    "area_over_1mm_mm2": 103.2,
+    "contact_mm2": 318.0
+   },
+   "57": {
+    "max_press_mm": 3.94,
+    "area_over_1mm_mm2": 199.5,
+    "contact_mm2": 378.3
+   }
+  }
+ }
+}

@@ -84,6 +84,58 @@ Use plain `python3`, not `python3 -I`. trimesh is in the user site-packages.
 Ear/head scans: HUTUBS HRTF database, TU Berlin (Brinkmann et al. 2019), CC BY 4.0,
 doi:10.14279/depositonce-8487.
 
+## In-ear reshape + comfort sleeves (2026-11-05)
+
+**Why:** the in-ear unit pressed 2.2–4.4 mm into all six scanned ears. Slices at canal height
+showed the cause: the 9 mm driver's housing sat centred on the canal and hung ~6 mm below it, into
+the intertragic notch and the lower rim of the canal opening.
+
+**Sweep** (`fit` on the six HUTUBS ears, pose search allowing up to 3 mm pull-out), body moved
+perpendicular to the canal axis, nozzle fixed:
+
+| Body offset | Mean worst press | Mean area > 1 mm |
+|---|---|---|
+| none | 3.17 mm | 159 mm² |
+| back 2 | 3.15 | 144 |
+| up 2 | 2.33 | 80 |
+| up 2 + back 1.5 | 2.22 | 77 |
+| up 2 + forward 1.5 | 2.27 | 79 |
+| **up 3** | **2.03** | **63** |
+
+Most best poses also pulled the unit 3 mm out, so `bte.py` now moves the body **3 mm up and 3 mm
+out** and the nozzle grows **5.5 → 8.5 mm** (ear-tip depth unchanged). 3 mm is the most the 3 mm
+bore can move off the 9 mm driver and still face it; the bore now meets the driver face at its
+edge, through the 0.4 mm front gap (normal for offset-nozzle IEMs; check the sound by ear).
+
+**Result** (`refit_inear_A.py`, full pose search, unit A):
+
+| Ear | Before: worst / area | After: worst / area |
+|---|---|---|
+| pp48 | 4.4 / 323 | 2.9 / 160 |
+| pp81 | 3.8 / 199 | 2.5 / 54 |
+| pp30 | 2.8 / 138 | 1.5 / 13 |
+| pp3 | 3.3 / 144 | 0.8 / 0 |
+| pp12 | 2.2 / 137 | 1.3 / 7 |
+| pp57 | 3.6 / 264 | 1.8 / 44 |
+| mean | 3.35 / 201 | **1.77 / 46** |
+
+Trade-off: it sticks out ~2–3 mm more (protrusion past the tragus now −1.5 to 5.8 mm). The mass
+centre moved off the canal axis (moment 0.05 → ~0.1 N·mm, still negligible). Unit A is now
+14.7 × 15.7 × 21.7 mm, 1.67 g. Cable routes: 34–51 mm, so the 55 mm harness still fits.
+
+**Comfort sleeves** (`sleeves.py` → `sleeve_{M,L}_{L,R}.stl`, `sleeves.json`): S = bare shell;
+M / L = a 0.8 / 1.5 mm soft band over the concha part of the body (faceplate and nozzle bare).
+Scored as if rigid, both make the press **worse** on all six scanned ears (mean worst 1.77 → 2.55
+(M) → 3.32 mm (L)): all six are "S" ears. The sleeves are for ears larger than any in this small
+dataset, where the bare body would sit loose, and to put silicone rather than resin on the skin.
+Real silicone gives under load, so the rigid score overstates them. Print M/L in flexible resin
+for the real-ear test; the seal is still the standard S/M/L ear tip.
+
+**Speaker size** (2026-11-06): `HAVEN_DRIVER=8.0x3.9 HAVEN_OUT=<dir> python3 bte.py` rebuilds for
+another driver (BODY_UP clamps to driver radius − 1.5). An 8 × 3.9 mm driver fits better: mean worst
+1.53 mm / area 31 mm² vs 1.76 / 46 for the 9 mm (pp48 2.7/114, pp81 1.8/39, pp30 1.1/3, pp3 0.9/0,
+pp12 0.9/0, pp57 1.8/28). Plan: generic 8 mm TWS drivers first, OWR-0860T-16 as backup.
+
 ## Charging case (2026-11-05)
 
 `case.py` → `case_base.stl`, `case_lid.stl`, `case_plate.stl`, `board_case_outline.dxf`, `case.json`;

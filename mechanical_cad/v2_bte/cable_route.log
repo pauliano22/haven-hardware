@@ -1,0 +1,6 @@
+48 {'length_mm': 34.2, 'min_clearance_mm': 0.37, 'meets_1mm': False, 'top_above_E_mm': 22.7}
+81 {'length_mm': 40.1, 'min_clearance_mm': 1.14, 'meets_1mm': True, 'top_above_E_mm': 31.7}
+30 {'length_mm': 42.3, 'min_clearance_mm': 1.15, 'meets_1mm': True, 'top_above_E_mm': 30.8}
+3 {'length_mm': 45.3, 'min_clearance_mm': 1.16, 'meets_1mm': True, 'top_above_E_mm': 31.7}
+12 {'length_mm': 51.4, 'min_clearance_mm': -0.07, 'meets_1mm': False, 'top_above_E_mm': 28.2}
+57 {'length_mm': 48.2, 'min_clearance_mm': 0.03, 'meets_1mm': False, 'top_above_E_mm': 28.9}
