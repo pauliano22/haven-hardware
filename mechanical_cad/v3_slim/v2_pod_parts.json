@@ -1,0 +1,1102 @@
+[
+{
+"ref": "W1",
+"val": "CBL_V_LS",
+"fp": "WirePad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "F",
+"pads": 1,
+"nets": [
+"/V_LS"
+]
+},
+{
+"ref": "U4",
+"val": "XL-0201SURC",
+"fp": "LED-SMD_L0.65-W0.35-P0.41_XL-0201SURC",
+"w": 0.58,
+"h": 0.28,
+"side": "F",
+"pads": 2,
+"nets": [
+"/LED_K",
+"/VSYS"
+]
+},
+{
+"ref": "W5",
+"val": "CBL_SPK+",
+"fp": "WirePad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "F",
+"pads": 1,
+"nets": [
+"/SPK+"
+]
+},
+{
+"ref": "TP9",
+"val": "BAT-",
+"fp": "Pad_1.2",
+"w": 1.2,
+"h": 1.2,
+"side": "F",
+"pads": 1,
+"nets": [
+"/GND"
+]
+},
+{
+"ref": "W4",
+"val": "CBL_PDMDIN",
+"fp": "WirePad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "F",
+"pads": 1,
+"nets": [
+"/PDMDIN"
+]
+},
+{
+"ref": "W2",
+"val": "CBL_GND",
+"fp": "WirePad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "F",
+"pads": 1,
+"nets": [
+"/GND"
+]
+},
+{
+"ref": "TP8",
+"val": "BAT+",
+"fp": "Pad_1.2",
+"w": 1.2,
+"h": 1.2,
+"side": "F",
+"pads": 1,
+"nets": [
+"/VBAT"
+]
+},
+{
+"ref": "W6",
+"val": "CBL_SPK-",
+"fp": "WirePad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "F",
+"pads": 1,
+"nets": [
+"/SPK-"
+]
+},
+{
+"ref": "W3",
+"val": "CBL_CBL_PDMCLK",
+"fp": "WirePad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "F",
+"pads": 1,
+"nets": [
+"/CBL_PDMCLK"
+]
+},
+{
+"ref": "U1",
+"val": "MDBT53V-1M",
+"fp": "MDBT53V-1M",
+"w": 7.15,
+"h": 8.28,
+"side": "F",
+"pads": 39,
+"nets": [
+"/+1V8",
+"/BCLK",
+"/CHG_ERR",
+"/CHG_STAT",
+"/DAC_ENABLE",
+"/DCC",
+"/DCCD",
+"/DECD",
+"/DECR",
+"/DIN",
+"/DOUT",
+"/GND",
+"/LED_EN",
+"/LRCLK",
+"/SCL1",
+"/SDA1",
+"/SENSORS_ENABLE",
+"/SHIP_EN",
+"/SPARE_P1_13",
+"/SWCLK",
+"/SWDIO",
+"/VBUS_DET",
+"/VSYS_SENSE",
+"/XL1",
+"/XL2",
+"/nRESET",
+"unconnected-(U1-DCCH-Pad25)",
+"unconnected-(U1-P0.02{slash}NFC1-Pad22)",
+"unconnected-(U1-P0.03{slash}NFC2-Pad21)",
+"unconnected-(U1-P0.08{slash}SCK-Pad17)",
+"unconnected-(U1-P0.09{slash}MOSI-Pad15)",
+"unconnected-(U1-P0.16{slash}QSPI_IO3-Pad10)",
+"unconnected-(U1-P0.17{slash}QSPI_SCK-Pad8)",
+"unconnected-(U1-P0.18{slash}QSPI_CSN-Pad6)",
+"unconnected-(U1-P0.26{slash}AIN5-Pad5)"
+]
+},
+{
+"ref": "C27",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "D2",
+"val": "TPD1E05U06",
+"fp": "D_SOD-523",
+"w": 1.48,
+"h": 0.67,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "C36",
+"val": "1uF",
+"fp": "C0201",
+"w": 0.32,
+"h": 0.92,
+"side": "B",
+"pads": 2,
+"nets": [
+"/DVDD",
+"/GND"
+]
+},
+{
+"ref": "U14",
+"val": "SPH0641LU4H-1",
+"fp": "MIC-SMD_5P_L3.5-W2.7-P0.82_SPH0641LU4H-1",
+"w": 2.41,
+"h": 3.13,
+"side": "B",
+"pads": 9,
+"nets": [
+"/GND",
+"/MIC2_DATA",
+"/PDMCLK",
+"/V_LS"
+]
+},
+{
+"ref": "TP1",
+"val": "SWDIO",
+"fp": "TestPad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "B",
+"pads": 1,
+"nets": [
+"/SWDIO"
+]
+},
+{
+"ref": "L102",
+"val": "10uH",
+"fp": "L0402",
+"w": 1.88,
+"h": 0.54,
+"side": "B",
+"pads": 2,
+"nets": [
+"/DCCD",
+"/DECD"
+]
+},
+{
+"ref": "D4",
+"val": "TPD1E05U06",
+"fp": "D_SOD-523",
+"w": 1.48,
+"h": 0.67,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/PDMDIN"
+]
+},
+{
+"ref": "P1",
+"val": "POGO_VBUS",
+"fp": "PogoPad_1.6",
+"w": 1.6,
+"h": 1.6,
+"side": "B",
+"pads": 1,
+"nets": [
+"/VBUS"
+]
+},
+{
+"ref": "C13",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "TP2",
+"val": "SWCLK",
+"fp": "TestPad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "B",
+"pads": 1,
+"nets": [
+"/SWCLK"
+]
+},
+{
+"ref": "TP3",
+"val": "RESET",
+"fp": "TestPad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "B",
+"pads": 1,
+"nets": [
+"/nRESET"
+]
+},
+{
+"ref": "R113",
+"val": "560k",
+"fp": "R0201",
+"w": 0.79,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/VSYS_SENSE"
+]
+},
+{
+"ref": "R112",
+"val": "1M",
+"fp": "R0201",
+"w": 0.32,
+"h": 0.79,
+"side": "B",
+"pads": 2,
+"nets": [
+"/VSYS",
+"/VSYS_SENSE"
+]
+},
+{
+"ref": "U15",
+"val": "ADAU1860BCBZRL",
+"fp": "BGA-56_L3.0-W2.7-P0.35-R8-C7-TL",
+"w": 2.7,
+"h": 2.35,
+"side": "B",
+"pads": 56,
+"nets": [
+"/BCLK",
+"/CM",
+"/DAC_ENABLE",
+"/DIN",
+"/DOUT",
+"/DVDD",
+"/GND",
+"/LRCLK",
+"/PDMCLK",
+"/PDMDIN",
+"/SCL1",
+"/SDA1",
+"/SPK+",
+"/SPK-",
+"/V_LS",
+"/XTALI",
+"/XTALO",
+"unconnected-(U15-AINN0-PadG8)",
+"unconnected-(U15-AINN1-PadG6)",
+"unconnected-(U15-AINN2-PadG5)",
+"unconnected-(U15-AINP0-PadF6)",
+"unconnected-(U15-AINP1-PadF5)",
+"unconnected-(U15-AINP2-PadF4)",
+"unconnected-(U15-BCLK_1{slash}MP7-PadD5)",
+"unconnected-(U15-DMIC23{slash}MP2-PadC3)",
+"unconnected-(U15-FSYNC_1{slash}MP8-PadE5)",
+"unconnected-(U15-IRQ{slash}MP20-PadE3)",
+"unconnected-(U15-QSPIM_CLK{slash}MP11-PadB8)",
+"unconnected-(U15-QSPIM_CS{slash}MP12-PadF8)",
+"unconnected-(U15-QSPIM_SDIO0{slash}MP13-PadC8)",
+"unconnected-(U15-QSPIM_SDIO1{slash}MP14-PadD8)",
+"unconnected-(U15-QSPIM_SDIO2{slash}MP15-PadE8)",
+"unconnected-(U15-QSPIM_SDIO3{slash}MP16-PadE7)",
+"unconnected-(U15-SDATAI_1{slash}MP10-PadD4)",
+"unconnected-(U15-SDATAO_1{slash}MP9-PadD3)",
+"unconnected-(U15-TCK{slash}MP22-PadA5)",
+"unconnected-(U15-TDI{slash}MP25-PadA8)",
+"unconnected-(U15-TDO{slash}MP24-PadA7)",
+"unconnected-(U15-TMS{slash}MP23-PadA6)",
+"unconnected-(U15-UART_COMM_RX{slash}MP18-PadE2)",
+"unconnected-(U15-UART_COMM_TX{slash}MP17-PadD2)"
+]
+},
+{
+"ref": "C11",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.32,
+"h": 0.92,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "C102",
+"val": "1uF",
+"fp": "C0201",
+"w": 0.32,
+"h": 0.92,
+"side": "B",
+"pads": 2,
+"nets": [
+"/DECR",
+"/GND"
+]
+},
+{
+"ref": "C116",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "C103",
+"val": "1uF",
+"fp": "C0201",
+"w": 0.32,
+"h": 0.92,
+"side": "B",
+"pads": 2,
+"nets": [
+"/DECD",
+"/GND"
+]
+},
+{
+"ref": "C42",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "R110",
+"val": "10k",
+"fp": "R0201",
+"w": 0.79,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/NTC"
+]
+},
+{
+"ref": "R111",
+"val": "15k 1%",
+"fp": "R0201",
+"w": 0.79,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/ICHG"
+]
+},
+{
+"ref": "C14",
+"val": "9pF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/XL1"
+]
+},
+{
+"ref": "C45",
+"val": "33pF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/XO_R"
+]
+},
+{
+"ref": "C40",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "D1",
+"val": "TPD1E05U06",
+"fp": "D_SOD-523",
+"w": 1.48,
+"h": 0.67,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/VBUS"
+]
+},
+{
+"ref": "R4",
+"val": "510R",
+"fp": "R0201",
+"w": 0.32,
+"h": 0.79,
+"side": "B",
+"pads": 2,
+"nets": [
+"/LED_D",
+"/LED_K"
+]
+},
+{
+"ref": "C111",
+"val": "1uF",
+"fp": "C0201",
+"w": 0.32,
+"h": 0.92,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/VBAT"
+]
+},
+{
+"ref": "TP4",
+"val": "VDD",
+"fp": "TestPad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "B",
+"pads": 1,
+"nets": [
+"/+1V8"
+]
+},
+{
+"ref": "D6",
+"val": "TPD1E05U06",
+"fp": "D_SOD-523",
+"w": 1.48,
+"h": 0.67,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/SPK-"
+]
+},
+{
+"ref": "C7",
+"val": "1uF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "L2",
+"val": "2.2uH",
+"fp": "L0402",
+"w": 0.54,
+"h": 1.88,
+"side": "B",
+"pads": 2,
+"nets": [
+"/+1V8",
+"/SW"
+]
+},
+{
+"ref": "C46",
+"val": "33pF",
+"fp": "C0201",
+"w": 0.32,
+"h": 0.92,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/XTALI"
+]
+},
+{
+"ref": "U3",
+"val": "AP22916BCA4-7",
+"fp": "X1-WLB0808-4_L0.8-W0.8-P0.40-TL",
+"w": 0.58,
+"h": 0.58,
+"side": "B",
+"pads": 4,
+"nets": [
+"/+1V8",
+"/GND",
+"/SENSORS_ENABLE",
+"/V_LS"
+]
+},
+{
+"ref": "TP5",
+"val": "GND",
+"fp": "TestPad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "B",
+"pads": 1,
+"nets": [
+"/GND"
+]
+},
+{
+"ref": "R114",
+"val": "100k",
+"fp": "R0201",
+"w": 0.32,
+"h": 0.79,
+"side": "B",
+"pads": 2,
+"nets": [
+"/VBUS",
+"/VBUS_DET"
+]
+},
+{
+"ref": "R122",
+"val": "33R",
+"fp": "R0201",
+"w": 0.32,
+"h": 0.79,
+"side": "B",
+"pads": 2,
+"nets": [
+"/MIC2_DATA",
+"/PDMDIN"
+]
+},
+{
+"ref": "C12",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.32,
+"h": 0.92,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "R28",
+"val": "220R",
+"fp": "R0201",
+"w": 0.79,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/XO_R",
+"/XTALO"
+]
+},
+{
+"ref": "U2",
+"val": "nPM1100-CAAB-R",
+"fp": "WLCSP-25_2.075x2.075_P0.4",
+"w": 1.8,
+"h": 1.8,
+"side": "B",
+"pads": 25,
+"nets": [
+"/+1V8",
+"/CHG_ERR",
+"/CHG_STAT",
+"/DEC",
+"/GND",
+"/ICHG",
+"/NTC",
+"/SHIP_EN",
+"/SHPHLD",
+"/SW",
+"/VBAT",
+"/VBUS",
+"/VSYS",
+"unconnected-(U2-D+-PadA2)"
+]
+},
+{
+"ref": "C38",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "C114",
+"val": "10uF",
+"fp": "C0402",
+"w": 0.54,
+"h": 1.88,
+"side": "B",
+"pads": 2,
+"nets": [
+"/+1V8",
+"/GND"
+]
+},
+{
+"ref": "D3",
+"val": "TPD1E05U06",
+"fp": "D_SOD-523",
+"w": 1.48,
+"h": 0.67,
+"side": "B",
+"pads": 2,
+"nets": [
+"/CBL_PDMCLK",
+"/GND"
+]
+},
+{
+"ref": "R120",
+"val": "33R",
+"fp": "R0201",
+"w": 0.79,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/CBL_PDMCLK",
+"/PDMCLK"
+]
+},
+{
+"ref": "C2",
+"val": "9pF",
+"fp": "C0201",
+"w": 0.32,
+"h": 0.92,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/XL2"
+]
+},
+{
+"ref": "C110",
+"val": "2.2uF",
+"fp": "C0402",
+"w": 0.54,
+"h": 1.88,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/VBUS"
+]
+},
+{
+"ref": "R115",
+"val": "47k",
+"fp": "R0201",
+"w": 0.79,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/VBUS_DET"
+]
+},
+{
+"ref": "C41",
+"val": "10uF",
+"fp": "C0402",
+"w": 0.54,
+"h": 1.88,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "C31",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.32,
+"h": 0.92,
+"side": "B",
+"pads": 2,
+"nets": [
+"/DVDD",
+"/GND"
+]
+},
+{
+"ref": "TP6",
+"val": "P1.13",
+"fp": "TestPad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "B",
+"pads": 1,
+"nets": [
+"/SPARE_P1_13"
+]
+},
+{
+"ref": "C44",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "R5",
+"val": "2k",
+"fp": "R0201",
+"w": 0.79,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/SDA1",
+"/V_LS"
+]
+},
+{
+"ref": "C34",
+"val": "10uF",
+"fp": "C0402",
+"w": 0.54,
+"h": 1.88,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "C32",
+"val": "1uF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/CM",
+"/GND"
+]
+},
+{
+"ref": "P2",
+"val": "POGO_GND",
+"fp": "PogoPad_1.6",
+"w": 1.6,
+"h": 1.6,
+"side": "B",
+"pads": 1,
+"nets": [
+"/GND"
+]
+},
+{
+"ref": "C112",
+"val": "10uF",
+"fp": "C0402",
+"w": 0.54,
+"h": 1.88,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/VSYS"
+]
+},
+{
+"ref": "L101",
+"val": "10uH",
+"fp": "L0402",
+"w": 0.54,
+"h": 1.88,
+"side": "B",
+"pads": 2,
+"nets": [
+"/DCC",
+"/DECR"
+]
+},
+{
+"ref": "TP7",
+"val": "SHPHLD",
+"fp": "TestPad_0.8",
+"w": 0.8,
+"h": 0.8,
+"side": "B",
+"pads": 1,
+"nets": [
+"/SHPHLD"
+]
+},
+{
+"ref": "C43",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.32,
+"h": 0.92,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "D5",
+"val": "TPD1E05U06",
+"fp": "D_SOD-523",
+"w": 1.48,
+"h": 0.67,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/SPK+"
+]
+},
+{
+"ref": "C101",
+"val": "4.7uF",
+"fp": "C0402",
+"w": 0.54,
+"h": 1.88,
+"side": "B",
+"pads": 2,
+"nets": [
+"/+1V8",
+"/GND"
+]
+},
+{
+"ref": "Q2",
+"val": "CSD15380F3",
+"fp": "PICOSTAR-3_L0.7-W0.6-P0.40-TL",
+"w": 0.6,
+"h": 0.6,
+"side": "B",
+"pads": 3,
+"nets": [
+"/GND",
+"/LED_D",
+"/LED_EN"
+]
+},
+{
+"ref": "C47",
+"val": "1uF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "CRYSTAL1",
+"val": "24.576MHz",
+"fp": "CRYSTAL-SMD_4P-L2.0-W1.6-BL_HUAXIN_CN4",
+"w": 2.3,
+"h": 1.9,
+"side": "B",
+"pads": 4,
+"nets": [
+"/GND",
+"/XO_R",
+"/XTALI"
+]
+},
+{
+"ref": "C33",
+"val": "10uF",
+"fp": "C0402",
+"w": 1.88,
+"h": 0.54,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/V_LS"
+]
+},
+{
+"ref": "R116",
+"val": "1M",
+"fp": "R0201",
+"w": 0.32,
+"h": 0.79,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/LED_EN"
+]
+},
+{
+"ref": "R9",
+"val": "2k",
+"fp": "R0201",
+"w": 0.79,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/SCL1",
+"/V_LS"
+]
+},
+{
+"ref": "X1",
+"val": "32.768kHz",
+"fp": "FC-135R_L3.2-W1.5",
+"w": 3.5,
+"h": 1.8,
+"side": "B",
+"pads": 2,
+"nets": [
+"/XL1",
+"/XL2"
+]
+},
+{
+"ref": "C113",
+"val": "10uF",
+"fp": "C0402",
+"w": 1.88,
+"h": 0.54,
+"side": "B",
+"pads": 2,
+"nets": [
+"/DEC",
+"/GND"
+]
+},
+{
+"ref": "C115",
+"val": "100nF",
+"fp": "C0201",
+"w": 0.92,
+"h": 0.32,
+"side": "B",
+"pads": 2,
+"nets": [
+"/GND",
+"/VSYS_SENSE"
+]
+}
+]
